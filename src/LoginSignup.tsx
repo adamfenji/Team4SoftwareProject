@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './LoginSignup.css'
 // Does specific file address work in actual website?
 import user_icon from 'C:/Users/admin/Documents/GitHub/Team4SoftwareProject/src/assets/person.png'
