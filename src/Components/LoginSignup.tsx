@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import './LoginSignup.css'
 // Does specific file address work in actual website?
-import user_icon from './assets/person.png'
-import email_icon from './assets/email.png'
-import password_icon from './assets/password.png'
-
+import user_icon from '/public/Images/LoginSignup/person.png' 
+import email_icon from '/public/Images/LoginSignup/email.png'
+import password_icon from '/public/Images/LoginSignup/password.png'
 const LoginSignup = () => {
 
   const [action,setAction] = useState("Sign Up");
