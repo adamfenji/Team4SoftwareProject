@@ -10,8 +10,8 @@
     padding: 0.4rem;
 }
 
-/* .SignUpBtn{
-    width: 40%
+.SignUpBtn {
+    width: 40%;
     margin: 0 auto;
     font-size: 1rem;
     font-weight: 0,0, 700;
@@ -21,7 +21,7 @@
     transition: 0.5s ease-in;
 }
 
-.SignUpBtn: hover{
+.SignUpBtn:hover{
     background-color: #3abef2;
     color: #fff !important;
-} */
+}
