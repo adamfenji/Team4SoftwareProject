@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './LoginSignup.css'
 // Does specific file address work in actual website?
-import user_icon from 'C:/Users/admin/Documents/GitHub/Team4SoftwareProject/src/assets/person.png'
-import email_icon from 'C:/Users/admin/Documents/GitHub/Team4SoftwareProject/src/assets/email.png'
-import password_icon from 'C:/Users/admin/Documents/GitHub/Team4SoftwareProject/src/assets/password.png'
+import user_icon from './assets/person.png'
+import email_icon from './assets/email.png'
+import password_icon from './assets/password.png'
 
 const LoginSignup = () => {
 
