@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {Dashboard} from "../pages/Dashboard.jsx";
-import LoginSignup from "./LoginSignup.tsx";
+import {Dashboard} from "./Dashboard.jsx";
+import LoginSignup from "./LoginSignup.js";
 
 export const Routes = () => {
     return(
