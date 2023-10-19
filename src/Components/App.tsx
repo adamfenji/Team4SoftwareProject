@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import './App.css'
 import LoginSignup from './LoginSignup';
 import './LoginSignup.css'
-import {Routes} from './Routes';
+import {Routes} from './Routes.jsx';
 
 function App() {
   return (
