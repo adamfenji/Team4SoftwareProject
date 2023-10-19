@@ -1,0 +1,64 @@
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    border-right: 1px solid black;
+    height: 100vh;
+}
+
+.sidebar .logo{
+    display: flex;
+    align-items: center;
+    padding: 25px 10px 15px;
+}
+
+.logo img{
+    width: auto;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.logo h2{
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar .links{
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar .links h4{
+    color: white;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.links li{
+    display: flex;
+    align-items: center;
+}
+
+.links li:hover{
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.links li .icon{
+    padding: 12px 10px;
+}
+
+.links li a{
+    color: white;
+    padding: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.links li a:hover{
+    font-weight: 700;
+    transition: 0.2s;
+}
