@@ -1,0 +1,107 @@
+.calendarContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    width: 80vw;
+    overflow-x: auto;
+    position: relative;
+}
+.calendarContainer::-webkit-scrollbar {
+    width: 100%;
+}
+.calendarContainer::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.calendarContainer::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
+}
+
+.dayContainer {
+    flex: 1;
+    text-align: center;
+    border: 1px solid white;
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.dayContainer > *{
+    margin: 0px;
+}
+
+.dayDescription{
+    color: white;
+    text-align: left;
+}
+
+.outerCircle{
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerCircle{
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#circle1{
+    fill: none;
+    stroke: cornflowerblue;
+    stroke-width: 20px;
+    stroke-dasharray: 472;
+    stroke-dashoffset: 472;
+    stroke-linecap: round;
+    animation: loadProgress 0.8s linear forwards;
+
+    cx: 75px;
+    cy: 75px;
+    r: 65px;
+}
+
+#circle2{
+    fill: none;
+    stroke: red;
+    stroke-width: 20px;
+    stroke-dasharray: 390;
+    stroke-dashoffset: 390;
+    stroke-linecap: round;
+    animation: loadProgress 0.8s linear forwards;
+
+    cx: 75px;
+    cy: 75px;
+    r: 45px;
+}
+
+#circle3{
+    fill: none;
+    stroke: green;
+    stroke-width: 20px;
+    stroke-dasharray: 250;
+    stroke-dashoffset: 390;
+    stroke-linecap: round;
+    animation: loadProgress 0.8s linear forwards;
+
+    cx: 75px;
+    cy: 75px;
+    r: 25px;
+}
+
+@keyframes loadProgress {
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+

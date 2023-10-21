@@ -1,10 +1,19 @@
 import SideBar from "./SideBar.tsx";
+import ActivityCalendar from "./ActivityCalendar.tsx";
 
-function Dashboard(){
-    return(
-        <>
-        <SideBar/>
-        </>
+import "./Dashboard.css";
+
+function Dashboard() {
+    return (
+        <div className="dashboardContainer">
+            <div className="sidebarDashboard">
+                <SideBar />
+            </div>
+            <div className="contentDashboard">
+                <ActivityCalendar />
+            </div>
+
+        </div>
     );
 }
 

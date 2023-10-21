@@ -16,11 +16,12 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
   background: linear-gradient(#2A0087, #42006C);
+  overflow-x: hidden;
+
 }
 
 h1 {
