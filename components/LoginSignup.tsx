@@ -4,6 +4,8 @@ import '../styles/LoginSignup.css'
 import user_icon from '../assets/person.png' 
 import email_icon from '../assets/email.png'
 import password_icon from '../assets/password.png'
+import Button from "./Button"
+
 const LoginSignup = () => {
 
   const [action,setAction] = useState("Sign Up");
@@ -37,6 +39,16 @@ const LoginSignup = () => {
       </div>
       {action==="Sign Up"?<div></div>:<div className = "forgot-password">Forgot Password? <span>Click Here!</span></div>}
       
+      <Button
+      border = "none"
+      color = "#4c00b4"
+      height = "100px"
+      onClick={() => window.location.href = "/Team4SoftwareProject/dashboard"}
+      width = "100px"
+      alignItems= "center"
+      borderRadius = "50px"
+      children = "Confirm"
+      />
       
     </div>
   )
