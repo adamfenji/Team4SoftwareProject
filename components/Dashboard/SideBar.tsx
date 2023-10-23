@@ -54,12 +54,19 @@ function SideBar() {
                     <a href="#">Settings</a>
                 </li>
                 <h4>Account</h4>
-                <li>
-                    <BiLogOutCircle className="icon" />
-                    <a href="#">Logout</a>
+                <li>        
+                    <BiLogOutCircle className="icon" 
+                    onClick={() => window.location.href = "/Team4SoftwareProject"}>/
+                    </BiLogOutCircle>
+                    <a href="#"
+                     onClick={() => window.location.href = "/Team4SoftwareProject"}>Logout
+                    </a>
+                    
+                    
+                    
                 </li>
             </ul>
-
+            
         </aside>
     );
 }
