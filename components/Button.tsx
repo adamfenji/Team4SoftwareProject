@@ -4,6 +4,7 @@ import React from "react";
 interface Props {
   border: string;
   color: string;
+  backgroundColor: string;
   children?: React.ReactNode;
   height: string;
   onClick: () => void;
@@ -11,11 +12,13 @@ interface Props {
   alignItems: string;
   borderRadius: string;
   margin: string;
+  
 }
 
 const Button: React.FC<Props> = ({ 
     border,
     color,
+    backgroundColor,
     children,
     height,
     onClick, 
@@ -28,13 +31,14 @@ const Button: React.FC<Props> = ({
     <button 
       onClick={onClick}
       style={{
-         backgroundColor: color,
+         backgroundColor,
          border,
          height,
          width,
          alignItems,
          borderRadius,
          margin,
+         color
       }}
   
     >
