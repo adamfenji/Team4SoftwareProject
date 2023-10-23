@@ -66,6 +66,7 @@
     margin-top: 27px;
     color: #797979;
     font-size: 18px;
+    margin-bottom: 27px;
 }
 
 .forgot-password span{
@@ -102,4 +103,8 @@
     color: #3c009d;
     font-size: 40px;
     font-weight: 500;
+}
+
+.button{
+    margin: auto
 }

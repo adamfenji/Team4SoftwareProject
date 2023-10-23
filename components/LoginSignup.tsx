@@ -40,6 +40,7 @@ const LoginSignup = () => {
       {action==="Sign Up"?<div></div>:<div className = "forgot-password">Forgot Password? <span>Click Here!</span></div>}
       
       <Button
+      margin = "auto"
       border = "none"
       color = "#4c00b4"
       height = "100px"
