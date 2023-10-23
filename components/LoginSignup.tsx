@@ -42,13 +42,14 @@ const LoginSignup = () => {
       <Button
       margin = "auto"
       border = "none"
-      color = "#4c00b4"
-      height = "100px"
+      backgroundColor = "#4c00b4"
+      height = "75px"
       onClick={() => window.location.href = "/Team4SoftwareProject/dashboard"}
       width = "100px"
       alignItems= "center"
       borderRadius = "50px"
       children = "Confirm"
+      color = "white"
       />
       
     </div>
