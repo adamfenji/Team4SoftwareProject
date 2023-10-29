@@ -11,7 +11,7 @@ const LoginSignup = () => {
   const [action,setAction] = useState("Sign Up");
 
   return (
-    <div className = 'container'>
+    <div className = 'logincontainer'>
       <div className = "submit-container">
       <div className = {action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Sign Up")}}>Sign Up</div>
       <div className = "or">or</div>
