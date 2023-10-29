@@ -1,0 +1,8 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    overflow-x: auto;
+    position: relative;
+}

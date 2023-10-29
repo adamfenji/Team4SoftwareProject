@@ -5,7 +5,6 @@ import { BiLogOutCircle, BiBody } from "react-icons/bi";
 import { FaAppleAlt, FaBrain } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 
-
 import "./SideBar.css";
 
 function SideBar() {
@@ -25,8 +24,11 @@ function SideBar() {
             <ul className="links">
                 <h4>Main Menu</h4>
                 <li>
-                    <LuLayoutDashboard className="icon" />
-                    <a href="#">Dashboard</a>
+                    <LuLayoutDashboard className="icon" 
+                    onClick={() => window.location.href = "/Team4SoftwareProject/dashboard"}>/
+                    </LuLayoutDashboard>
+                    <a href="#"
+                    onClick={() => window.location.href = "/Team4SoftwareProject/dashboard"}>Dashboard</a>
                 </li>
 
                 <h4>Trackers</h4>
@@ -49,15 +51,13 @@ function SideBar() {
                     <a href="#">Analytics</a>
                 </li>
 
-
                 <h4>Settings</h4>
                 <li>
                     <CgProfile className="icon" 
-                    onClick={() => window.location.href = "/Team4SoftwareProject/Profile"}>/
+                    onClick={() => window.location.href = "/Team4SoftwareProject/profile"}>/
                     </CgProfile>
-
                     <a href="#"
-                    onClick={() => window.location.href = "/Team4SoftwareProject/Profile"}>Profile
+                    onClick={() => window.location.href = "/Team4SoftwareProject/profile"}>Profile
                     </a>
                 </li>
                 <li>
