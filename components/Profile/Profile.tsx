@@ -1,4 +1,3 @@
-import React from "react";
 import SideBar from "../Dashboard/SideBar";
 import ProfilePage from "./ProfilePage"
 
