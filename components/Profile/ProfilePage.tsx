@@ -1,4 +1,3 @@
-import React from "react";
 import "./ProfilePage.css"
 import { CgProfile } from "react-icons/cg";
 
