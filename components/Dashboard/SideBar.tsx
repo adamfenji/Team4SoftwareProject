@@ -3,6 +3,8 @@ import { FiSettings } from "react-icons/fi";
 import { ImStatsDots } from "react-icons/im";
 import { BiLogOutCircle, BiBody } from "react-icons/bi";
 import { FaAppleAlt, FaBrain } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+
 
 import "./SideBar.css";
 
@@ -50,6 +52,15 @@ function SideBar() {
 
                 <h4>Settings</h4>
                 <li>
+                    <CgProfile className="icon" 
+                    onClick={() => window.location.href = "/Team4SoftwareProject/Profile"}>/
+                    </CgProfile>
+
+                    <a href="#"
+                    onClick={() => window.location.href = "/Team4SoftwareProject/Profile"}>Profile
+                    </a>
+                </li>
+                <li>
                     <FiSettings className="icon" />
                     <a href="#">Settings</a>
                 </li>
@@ -61,9 +72,6 @@ function SideBar() {
                     <a href="#"
                      onClick={() => window.location.href = "/Team4SoftwareProject"}>Logout
                     </a>
-                    
-                    
-                    
                 </li>
             </ul>
             
