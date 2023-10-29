@@ -1,14 +1,12 @@
-import '../styles/App.css'
-// import LoginSignup from '../components/LoginSignup';
-// import PhysicalTracker from "../components/PhysicalTracker.tsx";
-import '../styles/LoginSignup.css';
-// import Dashboard from '../components/Dashboard/Dashboard';
-import LoginSignup from '../components/LoginSignup';
+import './App.css'
+import LoginSignup from './Components/LoginSignup.tsx';
+import './Components/LoginSignup.css'
+
 function App() {
   return (
-  <>
-    <LoginSignup/> 
-  </>
+  <div>
+    <LoginSignup/>
+  </div>
   );
 }
 
