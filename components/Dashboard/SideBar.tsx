@@ -3,6 +3,7 @@ import { FiSettings } from "react-icons/fi";
 import { ImStatsDots } from "react-icons/im";
 import { BiLogOutCircle, BiBody } from "react-icons/bi";
 import { FaAppleAlt, FaBrain } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 
 import "./SideBar.css";
 
@@ -23,8 +24,11 @@ function SideBar() {
             <ul className="links">
                 <h4>Main Menu</h4>
                 <li>
-                    <LuLayoutDashboard className="icon" />
-                    <a href="#">Dashboard</a>
+                    <LuLayoutDashboard className="icon" 
+                    onClick={() => window.location.href = "/Team4SoftwareProject/dashboard"}>/
+                    </LuLayoutDashboard>
+                    <a href="#"
+                    onClick={() => window.location.href = "/Team4SoftwareProject/dashboard"}>Dashboard</a>
                 </li>
 
                 <h4>Trackers</h4>
@@ -47,19 +51,30 @@ function SideBar() {
                     <a href="#">Analytics</a>
                 </li>
 
-
                 <h4>Settings</h4>
+                <li>
+                    <CgProfile className="icon" 
+                    onClick={() => window.location.href = "/Team4SoftwareProject/profile"}>/
+                    </CgProfile>
+                    <a href="#"
+                    onClick={() => window.location.href = "/Team4SoftwareProject/profile"}>Profile
+                    </a>
+                </li>
                 <li>
                     <FiSettings className="icon" />
                     <a href="#">Settings</a>
                 </li>
                 <h4>Account</h4>
-                <li>
-                    <BiLogOutCircle className="icon" />
-                    <a href="#">Logout</a>
+                <li>        
+                    <BiLogOutCircle className="icon" 
+                    onClick={() => window.location.href = "/Team4SoftwareProject"}>/
+                    </BiLogOutCircle>
+                    <a href="#"
+                     onClick={() => window.location.href = "/Team4SoftwareProject"}>Logout
+                    </a>
                 </li>
             </ul>
-
+            
         </aside>
     );
 }
