@@ -1,14 +1,12 @@
 body{
     padding: 0px;
     margin: 0px;
-    overflow-x: hidden;
 }
 
 .sidebar{
     background-color: black;
     border-right: 1px solid black;
-    height: 100%;
-    overflow-y: auto;
+    height: 100vh;
     color: white;
     overflow-x: hidden;
 }
@@ -77,33 +75,6 @@ body{
     font-weight: 700; 
     text-shadow: 0 0 20px 1px white;
 }
-
-.accountSection{
-    margin-left: -50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#sidebar-profile-pic{
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: 0.12s;
-}
-
-#sidebar-profile-pic:hover{
-    height: 85px;
-    width: 85px;
-    box-shadow: 0 0 20px 1px white;
-}
-
-#sidebar-profile-name{
-    font-weight: 500;
-}
-
 
 .sidebar .logo-extanded{
     display: flex;

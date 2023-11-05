@@ -1,21 +1,10 @@
 .dashboardContainer{
     display: flex;
-    width: 99%;
+    width: 100%;
     flex: 1;
 }
 
-.contentContainer{
+.contentDashboard{
     width: 100%;
+    border: 2px solid green;
 }
-
-/* .chartContainer{
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-} */

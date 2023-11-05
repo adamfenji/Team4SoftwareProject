@@ -8,19 +8,15 @@ import "./Dashboard.css";
 function Dashboard() {
     return (
         <div className="dashboardContainer">
-            <div className="sidebarDashboard animate__animated animate__slideInLeft animate__delay-1s">
+            <div className="sidebarDashboard">
                 <SideBar />
             </div>
             <div className="contentDashboard">
                 <ActivityCalendar />
-                <WidgetGoals/>
-                <div className="chartContainer">
-                    {/* <h3>ChartContainer</h3> */}
-                </div>
+                <WidgetGoals />
             </div>
-
         </div>
-        
+
     );
 }
 

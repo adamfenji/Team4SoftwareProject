@@ -11,7 +11,7 @@ import { useState } from "react";
 
 function SideBar() {
 
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
 
     return (
         <aside className="sidebar animate__animated animate__slideInLeft animate__delay-1s">
