@@ -45,7 +45,7 @@ const LoginSignup = () => {
           border="none"
           backgroundColor="#4c00b4"
           height="75px"
-          onClick={() => window.location.href = "/dashboard"}
+          onClick={() => window.location.href = "/Team4SoftwareProject/dashboard"}
           width="100px"
           alignItems="center"
           borderRadius="50px"
