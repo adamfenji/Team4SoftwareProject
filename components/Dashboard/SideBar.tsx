@@ -51,7 +51,7 @@ function SideBar() {
                     <a href="#">Analytics</a>
                 </li>
 
-                <h4>Settings</h4>
+                <h4>Account</h4>
                 <li>
                     <CgProfile className="icon" 
                     onClick={() => window.location.href = "/Team4SoftwareProject/profile"}>/
