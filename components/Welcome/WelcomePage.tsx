@@ -1,4 +1,3 @@
-import React from 'react';
 import "./WelcomePage.css"
 import { IoBalloon } from "react-icons/io5";
 
@@ -13,7 +12,6 @@ const Welcome = () => {
                 <h1>Welcome!!</h1>
             </div>
 
-        
         </div>
     );
 };
