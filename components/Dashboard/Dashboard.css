@@ -1,18 +1,9 @@
 .dashboardContainer{
     display: flex;
-    width: 99%;
+    width: 100%;
     flex: 1;
 }
 
-.chartContainer{
-    border: 1px solid black;
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    background-color: lightgrey;
-    color: black;
+.contentDashboard{
+    width: 100%;
 }

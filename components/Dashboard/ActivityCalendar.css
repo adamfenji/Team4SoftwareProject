@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     white-space: nowrap;
-    width: 80vw;
+    width: 100%;
     overflow-x: auto;
     position: relative;
 }

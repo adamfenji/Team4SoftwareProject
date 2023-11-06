@@ -1,10 +1,11 @@
 import "./ActivityCalendar.css";
+import 'animate.css';
 
 function ActivityCalendar() {
     return (
         <>
             <div className="calendarContainer">
-                <div className="dayContainer">
+                <div className="dayContainer animate__animated animate__bounceInRight">
                     <h3>Monday</h3>
                     <div className="outerCircle">
                         <div className="innerCircle">
@@ -23,7 +24,7 @@ function ActivityCalendar() {
                     </ul>
                 </div>
 
-                <div className="dayContainer">
+                <div className="dayContainer animate__animated animate__bounceInRight">
                     <h3>Tuesday</h3>
                     <div className="outerCircle">
                         <div className="innerCircle">
@@ -42,7 +43,7 @@ function ActivityCalendar() {
                     </ul>
                 </div>
 
-                <div className="dayContainer">
+                <div className="dayContainer animate__animated animate__bounceInRight">
                     <h3>Wednesday</h3>
                     <div className="outerCircle">
                         <div className="innerCircle">
@@ -61,7 +62,7 @@ function ActivityCalendar() {
                     </ul>
                 </div>
 
-                <div className="dayContainer">
+                <div className="dayContainer animate__animated animate__bounceInRight">
                     <h3>Thursday</h3>
                     <div className="outerCircle">
                         <div className="innerCircle">
@@ -80,7 +81,7 @@ function ActivityCalendar() {
                     </ul>
                 </div>
 
-                <div className="dayContainer">
+                <div className="dayContainer animate__animated animate__bounceInRight">
                     <h3>Friday</h3>
                     <div className="outerCircle">
                         <div className="innerCircle">
@@ -99,7 +100,7 @@ function ActivityCalendar() {
                     </ul>
                 </div>
 
-                <div className="dayContainer">
+                <div className="dayContainer animate__animated animate__bounceInRight">
                     <h3>Saturday</h3>
                     <div className="outerCircle">
                         <div className="innerCircle">
@@ -118,7 +119,7 @@ function ActivityCalendar() {
                     </ul>
                 </div>
 
-                <div className="dayContainer">
+                <div className="dayContainer animate__animated animate__bounceInRight">
                     <h3>Sunday</h3>
                     <div className="outerCircle">
                         <div className="innerCircle">
