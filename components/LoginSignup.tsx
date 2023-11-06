@@ -51,6 +51,8 @@ const LoginSignup = () => {
           borderRadius="50px"
           children="Confirm"
           color="white"
+          fontFamily = "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif"
+          fontWeight="600"
         />
 
       </div>
