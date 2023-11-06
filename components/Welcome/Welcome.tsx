@@ -1,6 +1,6 @@
 import SideBar from "../Dashboard/SideBar";
 import WelcomePage from "./WelcomePage"
-import React from "react";
+
 import "./Welcome.css";
 
 
