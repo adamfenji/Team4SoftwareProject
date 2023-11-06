@@ -4,6 +4,7 @@ import { ImStatsDots } from "react-icons/im";
 import { BiLogOutCircle, BiBody } from "react-icons/bi";
 import { FaAppleAlt, FaBrain } from "react-icons/fa";
 import { CgMoreVertical, CgProfile } from "react-icons/cg";
+import { IoBalloon } from "react-icons/io5";
 
 import "./SideBar.css";
 
@@ -40,6 +41,16 @@ function SideBar() {
                             </LuLayoutDashboard>
                             <a href="#"
                                 onClick={() => window.location.href = "/Team4SoftwareProject/dashboard"}>Dashboard</a>
+                        </li>
+
+                        <h4>Welcome Page</h4>
+                        <li>
+                            <IoBalloon className="icon"
+                            onClick={() => window.location.href = "/Team4SoftwareProject/Welcome"}>/
+                            </IoBalloon>
+                            <a href="#"
+                            onClick={() => window.location.href = "/Team4SoftwareProject/Welcome"}>Welcome
+                            </a>
                         </li>
 
                         <h4>Trackers</h4>
@@ -111,6 +122,12 @@ function SideBar() {
                             </LuLayoutDashboard>
                                 </a>
                         </li>
+
+                        <li>
+
+                            <a href="#"><IoBalloon className="icon" /></a>
+                        </li>
+
                         <li>
 
                             <a href="#"><BiBody className="icon" /></a>
