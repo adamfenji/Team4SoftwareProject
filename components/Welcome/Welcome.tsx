@@ -10,6 +10,9 @@ function Welcome () {
             <div className="sidebarDashboard">
                 <SideBar />
             </div>
+            <div className="welcomeDashboard">
+                <WelcomePage />
+            </div>
         </div>
     );
 }
