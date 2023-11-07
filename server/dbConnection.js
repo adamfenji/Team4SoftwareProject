@@ -14,7 +14,7 @@ app.use(express.json);
 app.use(cors());
 app.use(cookieParser);
 
-const con = mysql.createConnection({
+const db = mysql.createConnection({
   host: "classdb.it.mtu.edu",
   port: 3307,
   user: "jrbartos",
@@ -22,7 +22,7 @@ const con = mysql.createConnection({
   database: 'tspgroup4'
 });
 
-con.connect(function (err) {
+db.connect(function (err) {
   if(err){
       console.log("error occurred while connecting");
   }
@@ -39,25 +39,25 @@ con.connect(function (err) {
 
 // })
 
-// app.post('/Team4SoftwareProject', (req, res) => {
-//   const sql = "INSERT INTO userLogin ('username', 'password', 'email') VALUES (?)";
-//   bcrypt.hash(req.body.password.toString(), salt, (err, hash) =>{
-//     if(err) return res.json({Error: "Error for Hashing Password"})
-//     const values = [
-//       req.body.name,
-//       hash,
-//       req.body.email
-//     ]
-//     db.query(sql, [values], (err, result) => {
-//       if(err) return res.json({Error: "Inserting data Error to server"});
-//       return res.json({Statue: "Success"});
-//     })
-//   })
+app.post('/Team4SoftwareProject', (req, res) => {
+  const sql = "INSERT INTO userLogin ('username', 'password', 'email') VALUES (?)";
+  bcrypt.hash(req.body.password.toString(), salt, (err, hash) =>{
+    if(err) return res.json({Error: "Error for Hashing Password"})
+    const values = [
+      req.body.name,
+      hash,
+      req.body.email
+    ]
+    db.query(sql, [values], (err, result) => {
+      if(err) return res.json({Error: "Inserting data Error to server"});
+      return res.json({Statue: "Success"});
+    })
+  })
   
-// })
+})
 
-// app.listen(3000, ()=>{
-//   console.log("Running...");
-// })
+app.listen(3000, ()=>{
+  console.log("Running...");
+})
 
 
