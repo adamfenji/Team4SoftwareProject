@@ -55,7 +55,9 @@ const LoginSignup = () => {
             <img src={password_icon} alt="" />
             <input type="password" placeholder="Password" name ='password' onChange={e => setValues({...values, password: e.target.value})}/>
           </div>
-          <button type ='submit'>Confirm</button>
+          {<button type ='submit'
+          onClick={() => (window.location.href = "/Team4SoftwareProject/dashboard")}
+          >Confirm</button>}
           {/* <Button
             margin="auto"
             border="none"
