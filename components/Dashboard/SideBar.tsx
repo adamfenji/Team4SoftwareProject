@@ -86,7 +86,6 @@ function SideBar() {
                             <FiSettings className="icon" />
                             <a href="#">Settings</a>
                         </li>
-                        <h4>Account</h4>
                         <li>
                             <BiLogOutCircle className="icon"
                                 onClick={() => window.location.href = "/Team4SoftwareProject"}>/
