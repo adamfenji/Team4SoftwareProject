@@ -16,16 +16,16 @@ const db = mysql.createConnection({
   host: "classdb.it.mtu.edu",
   user: "jrbartos",
   password:"*mySQLF23CS*",
-  database: "TS3141_Team4"
+  database: "tspgroup4"
 
 })
 
-app.post('/Team4SoftwareProject', (req, res) => {
-  const sql = "INSERT INTO userLogin ('username', 'password', 'email') VALUES (?, ?, ?)";
+app.post('http://localhost:3000/Team4SoftwareProject', (req, res) => {
+  const sql = "INSERT INTO userLogin ('username', 'password', 'email') VALUES (?)";
   bcrypt.hash(req.body.password.toString(), salt, (err, hash) =>{
     if(err) return res.json({Error: "Error for Hashing Password"})
     const values = [
-      rep.body.name,
+      req.body.name,
       hash,
       req.body.email
     ]

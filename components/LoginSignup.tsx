@@ -4,8 +4,6 @@ import '../styles/LoginSignup.css'
 import user_icon from '../assets/person.png'
 import email_icon from '../assets/email.png'
 import password_icon from '../assets/password.png'
-import Button from "./Button"
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios'
@@ -19,17 +17,25 @@ const LoginSignup = () => {
     password: ''
   })
 
-  const handleSubmit = (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
-    axios.post('http://localhost:3000/Team4SoftwareProject', values)
-    .then(res => console.log(res))
-    .then(err => console.log(err))
-  }
+  // const handleSubmit = (event: { preventDefault: () => void; }) => {
+  //   event.preventDefault();
+  //   axios.post('http://localhost:3000/Team4SoftwareProject', values)
+  //   .then(res => console.log(res))
+  //   .then(err => console.log(err))
+  // }
+
+    function handleClick() {
+      axios.post('http://localhost:3000/Team4SoftwareProject', values)
+      .then(res => console.log(res))
+      .then(err => console.log(err))
+      alert('You created an account');
+    }
+  
 
   return (
     <div className="pageContainer">
       
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className='logincontainer'>
           <div className="submit-container">
             <div className={action === "Login" ? "submit gray" : "submit"} onClick={() => { setAction("Sign Up") }}>Sign Up</div>
@@ -55,24 +61,8 @@ const LoginSignup = () => {
             <img src={password_icon} alt="" />
             <input type="password" placeholder="Password" name ='password' onChange={e => setValues({...values, password: e.target.value})}/>
           </div>
-          {<button type ='submit'
-          onClick={() => (window.location.href = "/Team4SoftwareProject/dashboard")}
-          >Confirm</button>}
-          {/* <Button
-            margin="auto"
-            border="none"
-            backgroundColor="#4c00b4"
-            height="75px"
-            onClick={() => (window.location.href = "/Team4SoftwareProject/dashboard")}
-            width="100px"
-            alignItems="center"
-            borderRadius="50px"
-            children="Confirm"
-            color="white"
-            fontFamily = "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif"
-            fontWeight="600"
-            type = "submit"
-          /> */}
+          <button onClick={handleClick}>Confirm</button>
+
         </div> 
         {action === "Sign Up" ? <div></div> : <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>}
       </div>
