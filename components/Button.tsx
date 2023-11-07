@@ -13,6 +13,7 @@ interface Props {
   margin: string;
   fontFamily: string;
   fontWeight: string;
+  type: string;
 }
 
 const Button: React.FC<Props> = ({ 
@@ -28,6 +29,7 @@ const Button: React.FC<Props> = ({
     margin,
     fontFamily,
     fontWeight,
+    type,
   }) => { 
   return (
     <button 
@@ -42,7 +44,8 @@ const Button: React.FC<Props> = ({
          margin,
          color,
          fontFamily,
-         fontWeight
+         fontWeight,
+        
       }}
   
     >

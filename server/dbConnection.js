@@ -1,19 +1,44 @@
-const mysql = require('mysql')
-const connection = mysql.createConnection({
-  host: 'classdb.it.mtu.edu',
-  user: 'afenjiro',
-  password: '@Adam1234',
-  database: 'tspgroup4'
+import express from 'express'
+import mysql from 'mysql'
+import cors from 'cors'
+import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
+import cookieParser from 'cookie-parser'
+
+const salt = 10;
+const app = express();
+
+app.use(express.json);
+app.use(cors());
+app.use(cookieParser);
+
+const db = mysql.createConnection({
+  host: "classdb.it.mtu.edu",
+  user: "jrbartos",
+  password:"*mySQLF23CS*",
+  database: "TS3141_Team4"
+
 })
 
-connection.connect((err) => {
-    if (err) {
-      console.error('Error connecting to the database: ' + err.message);
-    }
-    console.log('Connected to the database');
-});
-
-connection.query("SELECT * FROM userLogin", (res) => {
-    console.log(res);
+app.post('/Team4SoftwareProject', (req, res) => {
+  const sql = "INSERT INTO userLogin ('username', 'password', 'email') VALUES (?, ?, ?)";
+  bcrypt.hash(req.body.password.toString(), salt, (err, hash) =>{
+    if(err) return res.json({Error: "Error for Hashing Password"})
+    const values = [
+      rep.body.name,
+      hash,
+      req.body.email
+    ]
+    db.query(sql, [values], (err, result) => {
+      if(err) return res.json({Error: "Inserting data Error to server"});
+      return res.json({Statue: "Success"});
+    })
+  })
+  
 })
-connection.end()
+
+app.listen(3000, ()=>{
+  console.log("Running...");
+})
+
+
