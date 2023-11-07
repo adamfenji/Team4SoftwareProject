@@ -1,27 +1,3 @@
-.profilecontainer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
-    overflow-x: auto;
-    position: relative;
-}
-
-.pfp{
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    align-items: center;
-    gap: 0px;
-    width: 50px;
-    height: 50px;
-}
-
-.profileheader{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0px;
-    width: 100%;
-    margin-top: 0px;
-}
+.gradient-custom-2 {
+    background: linear-gradient(#2A0087, #42006C);
+    }

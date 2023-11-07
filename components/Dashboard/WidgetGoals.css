@@ -3,8 +3,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
+    background: linear-gradient(#2A0087, #42006C);
 }
-
+    
 .cardContainer{
     background-color: black;
     color: black;

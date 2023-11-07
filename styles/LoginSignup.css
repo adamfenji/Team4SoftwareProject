@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 99vh;
+    background: linear-gradient(#2A0087, #42006C);
 }
 
 .logincontainer{
