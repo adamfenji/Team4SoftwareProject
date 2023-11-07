@@ -4,8 +4,8 @@ import '../styles/LoginSignup.css'
 import user_icon from '../assets/person.png'
 import email_icon from '../assets/email.png'
 import password_icon from '../assets/password.png'
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+//import React from 'react';
+//import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios'
 
 const LoginSignup = () => {
