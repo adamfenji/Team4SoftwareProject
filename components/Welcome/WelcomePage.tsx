@@ -14,6 +14,7 @@ const Welcome = () => {
                     This is a test, we will learn if I can create a new line.
                     This should display a second line.
                 </p>
+                <input type='text' />
             </div>
 
         </div>

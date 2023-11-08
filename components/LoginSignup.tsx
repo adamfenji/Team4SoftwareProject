@@ -7,6 +7,7 @@ import password_icon from '../assets/password.png'
 //import React from 'react';
 //import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios'
+import { Navigate, useNavigate } from 'react-router';
 
 const LoginSignup = () => {
 
@@ -24,10 +25,11 @@ const LoginSignup = () => {
   //   .then(err => console.log(err))
   // }
 
-    function handleClick() {
-      axios.post('http://localhost:3000/Team4SoftwareProject', values)
-      .then(res => console.log(res))
-      .then(err => console.log(err))
+  const navigate = useNavigate();
+
+    const handleClick = (event: any) => {
+      event.preventDefault();
+      navigate('/Team4SoftwareProject/dashboard');
       alert('You created an account');
     }
   
@@ -35,7 +37,7 @@ const LoginSignup = () => {
   return (
     <div className="pageContainer">
       
-      <form>
+      <form onSubmit={handleClick}>
         <div className='logincontainer'>
           <div className="submit-container">
             <div className={action === "Login" ? "submit gray" : "submit"} onClick={() => { setAction("Sign Up") }}>Sign Up</div>
@@ -61,7 +63,7 @@ const LoginSignup = () => {
             <img src={password_icon} alt="" />
             <input type="password" placeholder="Password" name ='password' onChange={e => setValues({...values, password: e.target.value})}/>
           </div>
-          <button onClick={handleClick}>Confirm</button>
+          <button type="submit">Confirm</button>
 
         </div> 
         {action === "Sign Up" ? <div></div> : <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>}
