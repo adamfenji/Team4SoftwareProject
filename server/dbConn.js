@@ -2,16 +2,19 @@
 
 const mongoose = require("mongoose");
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = 3000;
 const dbName = 'testingDB';
 const connectionString = `mongodb+srv://afenjiro:%40Adam1234@activitytrackerdb.8ji6jif.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
+app.use(cors()); //enable CORS
+
 //Establish a connection to the DB.
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 });
 
 //Handle connection events, either error or success.

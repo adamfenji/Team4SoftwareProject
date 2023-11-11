@@ -4,39 +4,65 @@ import '../styles/LoginSignup.css'
 import user_icon from '../assets/person.png'
 import email_icon from '../assets/email.png'
 import password_icon from '../assets/password.png'
-//import React from 'react';
-//import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import axios from 'axios'
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
+import { useRef } from 'react';
+import axios from 'axios';
 
 const LoginSignup = () => {
 
   const [action, setAction] = useState("Sign Up");
-  const[values, setValues] = useState({
+  const [values, setValues] = useState({
     name: '',
     email: '',
     password: ''
   })
 
-  // const handleSubmit = (event: { preventDefault: () => void; }) => {
-  //   event.preventDefault();
-  //   axios.post('http://localhost:3000/Team4SoftwareProject', values)
-  //   .then(res => console.log(res))
-  //   .then(err => console.log(err))
-  // }
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const usernameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
 
   const navigate = useNavigate();
 
-    const handleClick = (event: any) => {
-      event.preventDefault();
-      navigate('/Team4SoftwareProject/dashboard');
-      alert('You created an account');
+  const handleClick = async (event: any) => {
+    event.preventDefault();
+
+    const name = nameRef.current?.value;
+    const username = usernameRef.current?.value;
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+
+    if (action === "Sign Up") {
+      let register = await axios.post('http://localhost:3000/users/register', {
+        name,
+        username,
+        email,
+        password
+      })
+        .then((result) => {
+          console.log(result);
+          navigate('/Team4SoftwareProject/dashboard');
+        })
+        .catch((error) => { console.log("Error posting data: " + error) });
     }
-  
+    else if (action === "Login") {
+      let login = await axios.post('http://localhost:3000/users/login', {
+        email,
+        password
+      })
+        .then((result) => {
+          console.log(result);
+          if (result.data === "Success") {
+            navigate('/Team4SoftwareProject/dashboard');
+          }
+        })
+        .catch((error) => { console.log("Error posting data: " + error) });
+    }
+  }
 
   return (
     <div className="pageContainer">
-      
+
       <form onSubmit={handleClick}>
         <div className='logincontainer'>
           <div className="submit-container">
@@ -50,27 +76,27 @@ const LoginSignup = () => {
           </div>
 
           <div className="inputs">
-          {action === "Login" ? <div></div> : <div className="input">
-            <img src={user_icon} alt="" />
-            <input type="text" placeholder="Name" name ='name' onChange={e => setValues({...values, name: e.target.value})} />
-          </div>}
+            {action === "Login" ? <div></div> : <div className="input">
+              <img src={user_icon} alt="" />
+              <input ref={nameRef} type="text" placeholder="Name" name='name' onChange={e => setValues({ ...values, name: e.target.value })} />
+            </div>}
 
-          <div className="input">
-            <img src={email_icon} alt="" />
-            <input type="email" placeholder="Email" name ='email' onChange={e => setValues({...values, email: e.target.value})}/>
-          </div>
-          <div className="input">
-            <img src={password_icon} alt="" />
-            <input type="password" placeholder="Password" name ='password' onChange={e => setValues({...values, password: e.target.value})}/>
-          </div>
-          <button type="submit">Confirm</button>
+            <div className="input">
+              <img src={email_icon} alt="" />
+              <input ref={emailRef} type="email" placeholder="Email" name='email' onChange={e => setValues({ ...values, email: e.target.value })} />
+            </div>
+            <div className="input">
+              <img src={password_icon} alt="" />
+              <input ref={passwordRef} type="password" placeholder="Password" name='password' onChange={e => setValues({ ...values, password: e.target.value })} />
+            </div>
+            <button type="submit">Confirm</button>
 
-        </div> 
-        {action === "Sign Up" ? <div></div> : <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>}
-      </div>
+          </div>
+          {action === "Sign Up" ? <div></div> : <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>}
+        </div>
       </form>
     </div>
   )
 };
 
-export default LoginSignup
+export default LoginSignup;
