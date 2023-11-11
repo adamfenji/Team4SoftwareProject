@@ -11,6 +11,8 @@ import axios from 'axios';
 const LoginSignup = () => {
 
   const [action, setAction] = useState("Sign Up");
+  const [AlertPassword, setAlertPassword] = useState(false);
+  const [AlertEmail, setAlertEmail] = useState(false);
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -55,6 +57,8 @@ const LoginSignup = () => {
           if (result.data === "Success") {
             navigate('/Team4SoftwareProject/dashboard');
           }
+          else if (result.data === "Password incorrect"){setAlertPassword(true)}
+          else if (result.data === "No user found"){setAlertEmail(true)}
         })
         .catch((error) => { console.log("Error posting data: " + error) });
     }
@@ -83,11 +87,18 @@ const LoginSignup = () => {
 
             <div className="input">
               <img src={email_icon} alt="" />
-              <input ref={emailRef} type="email" placeholder="Email" name='email' onChange={e => setValues({ ...values, email: e.target.value })} />
+              <input ref={emailRef} type="email" placeholder="Email" name='email' onChange={e => setValues({ ...values, email: e.target.value })} onClick={()=>setAlertEmail(false)}/>
+              {
+                AlertEmail ? <p className='AlertLogIn'>No user found</p> : null
+              }
             </div>
             <div className="input">
               <img src={password_icon} alt="" />
-              <input ref={passwordRef} type="password" placeholder="Password" name='password' onChange={e => setValues({ ...values, password: e.target.value })} />
+              <input ref={passwordRef} type="password" placeholder="Password" name='password' onChange={e => setValues({ ...values, password: e.target.value })} onClick={()=>setAlertPassword(false)}/>
+              {/* Incorect password */}
+              {
+                AlertPassword ? <p className='AlertLogIn'>Password incorrect</p> : null
+              }
             </div>
             <button type="submit">Confirm</button>
 

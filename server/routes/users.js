@@ -58,7 +58,7 @@ router.post("/login", async (req, res)=>{
             }
         }
         else{
-            res.json("No user found.");
+            res.json("No user found");
         }
     })
 });
