@@ -33,7 +33,7 @@ const LoginSignup = () => {
     const password = passwordRef.current?.value;
 
     if (action === "Sign Up") {
-      let register = await axios.post('http://localhost:3000/users/register', {
+      await axios.post('http://localhost:3000/users/register', {
         name,
         username,
         email,
@@ -46,7 +46,7 @@ const LoginSignup = () => {
         .catch((error) => { console.log("Error posting data: " + error) });
     }
     else if (action === "Login") {
-      let login = await axios.post('http://localhost:3000/users/login', {
+      await axios.post('http://localhost:3000/users/login', {
         email,
         password
       })
