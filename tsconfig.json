@@ -21,6 +21,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "components/LoginSignup.tsx", "components/Dashboard/Dashboard.tsx", "src/Routes.tsx"],
+  "include": ["src", "components/LoginSignUp/LoginSignup.tsx", "components/Dashboard/Dashboard.tsx", "src/Routes.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

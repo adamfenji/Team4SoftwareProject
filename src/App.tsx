@@ -1,7 +1,5 @@
 import '../styles/App.css'
-import '../styles/LoginSignup.css';
-import LoginSignup from '../components/LoginSignup';
-//import React from 'react';
+import LoginSignup from '../components/LoginSignUp/LoginSignup';
 
 function App() {
   return (    

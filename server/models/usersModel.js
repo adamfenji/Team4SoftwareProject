@@ -2,12 +2,13 @@
 
 const mongoose = require("mongoose");
 
-const testingCOllectionSchema = new mongoose.Schema({
-    _id: String,
+const userSchema = new mongoose.Schema({
     name: String,
     username: String,
     email: String,
     password: String
-})
+  }, {
+    versionKey: false
+  });
 
-module.exports = mongoose.model(`users`, testingCOllectionSchema);
+module.exports = mongoose.model(`users`, userSchema);

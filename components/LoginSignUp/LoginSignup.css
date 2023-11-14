@@ -112,3 +112,9 @@
     font-size: 40px;
     font-weight: 500;
 }
+
+.AlertLogIn{
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: red;
+}
