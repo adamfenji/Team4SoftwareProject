@@ -1,4 +1,3 @@
-import React from 'react';
 import "./WelcomePage.css"
 import { IoBalloon } from "react-icons/io5";
 
@@ -10,10 +9,14 @@ const Welcome = () => {
             </div>
         
             <div className = 'welcomeheader'>
-                <h1>Welcome!!</h1>
+                <h1>Welcome to Activity Tracker!!</h1>
+                <p>
+                    This is a test, we will learn if I can create a new line.
+                    This should display a second line.
+                </p>
+                <input type='text' />
             </div>
 
-        
         </div>
     );
 };
