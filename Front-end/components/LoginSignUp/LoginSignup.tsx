@@ -46,7 +46,7 @@ const LoginSignup = () => {
     }
     else if (action === "Login") {
       
-      try{
+      try{ //fixed
         const response = await axios.post('http://localhost:3000/api/authentification/login', {
           email,
           password
