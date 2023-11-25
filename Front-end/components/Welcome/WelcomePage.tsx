@@ -1,3 +1,4 @@
+import React from "react";
 import "./WelcomePage.css"
 import { IoBalloon } from "react-icons/io5";
 
