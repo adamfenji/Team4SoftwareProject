@@ -1,0 +1,12 @@
+.physicalTrackerContainer{
+    display: flex;
+    width: 99%;
+    flex: 1;
+}
+
+.physicalTracker{
+    width: 50%;
+}
+.sidebarDashboard{
+    display: flex;
+}
