@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './LoginSignup.css';
-// Does specific file address work in actual website?
 import { useNavigate } from 'react-router';
 import { useRef } from 'react';
 import axios from 'axios';
@@ -102,7 +101,8 @@ const LoginSignup = () => {
             <button type="submit">Confirm</button>
 
           </div>
-          {action === "Sign Up" ? <div></div> : <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>}
+          {action === "Sign Up" ? <div></div> : <div className="forgot-password"onClick={() => window.location.href = "/Team4SoftwareProject/password_reset"}>Forgot Password? <span>Click Here!</span></div>}
+          
         </div>
       </form>
     </div>
