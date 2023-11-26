@@ -56,7 +56,7 @@ function SideBar() {
                         <h4>Trackers</h4>
                         <li>
                             <BiBody className="icon" />
-                            <a href="#">Physical Tracker</a>
+                            <a href="/Team4SoftwareProject/physicaltracker">Physical Tracker</a>
                         </li>
                         <li>
                             <FaAppleAlt className="icon" />
