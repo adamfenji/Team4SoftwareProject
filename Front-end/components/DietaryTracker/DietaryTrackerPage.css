@@ -1,0 +1,12 @@
+.dietaryTrackerContainer{
+    display: flex;
+    width: 99%;
+    flex: 1;
+}
+
+.dietaryTracker{
+    width: 50%;
+}
+.sidebarDashboard{
+    display: flex;
+}
