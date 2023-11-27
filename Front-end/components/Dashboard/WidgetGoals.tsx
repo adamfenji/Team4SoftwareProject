@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { BiSolidBed } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FaAppleWhole, FaPersonRunning } from "react-icons/fa6";
