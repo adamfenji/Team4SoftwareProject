@@ -60,11 +60,11 @@ function SideBar() {
                         </li>
                         <li>
                             <FaAppleAlt className="icon" />
-                            <a href="#">Dietary Tracker</a>
+                            <a href="/Team4SoftwareProject/dietarytracker">Dietary Tracker</a>
                         </li>
                         <li>
                             <FaBrain className="icon" />
-                            <a href="#">Mental Tracker</a>
+                            <a href="/Team4SoftwareProject/mentaltracker">Mental Tracker</a>
                         </li>
 
                         <h4>Suggestions</h4>
