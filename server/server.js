@@ -12,7 +12,7 @@ const connectionString = `mongodb+srv://afenjiro:%40Adam1234@activitytrackerdb.8
 app.use(cors()); //enable CORS
 app.use(express.json()); //Enable express json
 
-//Establish a connection to the DB.
+//Establish a connection to the DB.cdc
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -27,7 +27,9 @@ db.once('open', () => {
 
 //Routes:
 const authentification = require("./routes/authentification");
+const workoutRoutes = require("./routes/workouts");
 app.use('/api/authentification', authentification);
+app.use('/api/workouts', isAuthenticated, workoutRoutes);
 
 app.listen(PORT, ()=>{ console.log(`Server running on PORT ${PORT}...`)});
 
