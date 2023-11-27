@@ -19,7 +19,9 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src", "Front-end/components/LoginSignUp/LoginSignup.tsx", "Front-end/components/Dashboard/Dashboard.tsx", "src/Routes.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
