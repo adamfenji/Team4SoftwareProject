@@ -1,10 +1,14 @@
-const mongoose = require("mongoose");
 
-const workoutSchema = new mongoose.Schema({
-  type: String,
-  goal: String,
+const mongoose = require('mongoose');
+
+const userPhyTrack = new mongoose.Schema({
+  workoutGoals: [
+    {
+      goal: String,
+    },
+  ],
 });
 
-const Workout = mongoose.model('Workout', workoutSchema);
+const UserPhyTrack = mongoose.model('UserPhyTrack', userPhyTrack);
 
-module.exports = Workout;
+module.exports = UserPhyTrack;
