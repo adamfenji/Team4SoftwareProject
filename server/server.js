@@ -27,15 +27,9 @@ db.once('open', () => {
 
 //Routes:
 const authentification = require("./routes/authentification");
-<<<<<<< HEAD
-const dailyTracking = require("./routes/dailyTracking");
-app.use('/api/authentification', authentification);
-app.use('/api/daily', dailyTracking);
-=======
 const workoutRoutes = require("./routes/workouts");
 app.use('/api/authentification', authentification);
 app.use('/api/workouts', isAuthenticated, workoutRoutes);
->>>>>>> 2ef612528a5548ccf35da01bef6d6b360f25c9a5
 
 app.listen(PORT, ()=>{ console.log(`Server running on PORT ${PORT}...`)});
 

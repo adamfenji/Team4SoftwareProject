@@ -1,4 +1,4 @@
-import React { useState } from "react";
+import React from "react";
 import axios from 'axios';
 import "./WelcomePage.css"
 import { IoBalloon } from "react-icons/io5";
