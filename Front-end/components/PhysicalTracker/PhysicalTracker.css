@@ -1,72 +1,111 @@
 .ptContainer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-  }
-  
-  .setGoal {
+}
+
+.setGoal,
+.workouts {
     flex: 1;
-    margin-right: 20px;
-  }
-  
-  .workouts {
-    flex: 1;
-  }
-  
-  form {
+    margin-bottom: 20px;
+}
+
+form {
     margin-top: 20px;
-  }
-  
-  label {
+}
+
+label {
     display: block;
     margin-bottom: 10px;
-    color: white; /* Match dashboard text color */
-  }
-  
-  textarea {
+    color: white;
+}
+
+textarea {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 4px;
-    background-color: transparent; /* Match dashboard background */
-    color: white; /* Match dashboard text color */
-  }
-  
-  input[type="submit"] {
+    background-color: transparent;
+    color: white;
+}
+
+input[type="submit"] {
     background-color: #4caf50;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  input[type="submit"]:hover {
+}
+
+input[type="submit"]:hover {
     background-color: #45a049;
-  }
-  
-  /* Style for each workout item */
-  .workoutItem {
+}
+
+/* Style for each workout item */
+.workoutItem {
     margin-bottom: 20px;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    background-color: #2c3e50; /* Match dashboard background */
-    color: white; /* Match dashboard text color */
-  }
-  
-  .workoutItem p {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.workoutItem p {
     margin: 0;
-  }
-  
-  /* Optional: Media query for responsiveness */
-  @media (max-width: 600px) {
+}
+
+.workoutTypeButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.workoutTypeButtons button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.workoutTypeButtons button:hover {
+    background-color: #2980b9;
+}
+
+.bodyPartButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.bodyPartButtons button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.bodyPartButtons button:hover {
+    background-color: #2980b9;
+}
+
+/* Optional: Media query for responsiveness */
+@media (max-width: 600px) {
     .ptContainer {
-      flex-direction: column;
+        flex-direction: column;
     }
-  }
-  
+}
