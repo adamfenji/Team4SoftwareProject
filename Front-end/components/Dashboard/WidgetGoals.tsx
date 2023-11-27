@@ -1,32 +1,92 @@
-import { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { BiSolidBed } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FaAppleWhole, FaPersonRunning } from "react-icons/fa6";
+import axios from "axios";
 
 import "./WidgetGoals.css";
 import 'animate.css';
 
 function WidgetGoals() {
+
     const [isSleepFront, setSleepFront] = useState(true);
     const [isDietFront, setDietFront] = useState(true);
     const [isExerciseFront, setExerciseFront] = useState(true);
+    const [token, setToken] = useState("");
 
-    const flipSleepCard = () => {
-        setSleepFront(!isSleepFront);
-    };
+    const [sleep, setSleep] = useState<number>(0);
+    const [diet, setDiet] = useState<number>(0);
+    const [exercise, setExercise] = useState<number>(0);
 
-    const flipDietCard = () => {
-        setDietFront(!isDietFront);
-    };
+    const sleepRef = useRef<HTMLInputElement | null>(null);
+    const dietRef = useRef<HTMLInputElement | null>(null);
+    const exerciseRef = useRef<HTMLInputElement | null>(null);
 
-    const flipExerciseCard = () => {
-        setExerciseFront(!isExerciseFront);
+    // Fetch token from localStorage on component mount
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(storedToken);
+        }
+    }, []);
+
+    const handleSubmit = async (event: React.FormEvent, cardType: string) => {
+        event.preventDefault();
+
+        // Get values from refs or default to 0
+        const sleepValue = sleepRef.current?.value ? parseInt(sleepRef.current.value) : 0;
+        const dietValue = dietRef.current?.value ? parseInt(dietRef.current.value) : 0;
+        const exerciseValue = exerciseRef.current?.value ? parseInt(exerciseRef.current.value) : 0;
+
+        // Update state with the entered values
+        let reqData = {};
+        if (cardType === 'diet') {
+            reqData = { diet: dietValue };
+            setDiet(dietValue);
+        }
+        if (cardType === 'sleep') {
+            reqData = { sleep: sleepValue };
+            setSleep(sleepValue);
+        }
+        if (cardType === 'exercise') {
+            reqData = { exercise: exerciseValue };
+            setExercise(exerciseValue);
+        }
+
+        try {
+            await axios.put(`http://localhost:3000/api/daily/11-27-2023`, reqData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+
+            flipCard(cardType);
+        } catch (error) {
+            console.error("Error posting data:", error);
+        }
+    }
+
+    const flipCard = (cardType: string) => {
+        switch (cardType) {
+            case 'sleep':
+                setSleepFront((prevState) => !prevState);
+                break;
+            case 'diet':
+                setDietFront((prevState) => !prevState);
+                break;
+            case 'exercise':
+                setExerciseFront((prevState) => !prevState);
+                break;
+            default:
+                break;
+        }
     };
 
     return (
         <div className="widgetContainer">
+            {/* Sleep card */}
             <div className="cardContainer animate__animated animate__bounceInRight" id="sleepCard">
-                <span className="addAction" onClick={flipSleepCard}><AiOutlinePlus /></span>
+                <span className="addAction" onClick={() => flipCard('sleep')}><AiOutlinePlus /></span>
                 {isSleepFront ? (
                     <>
                         <div className="sectionHeader">
@@ -34,21 +94,23 @@ function WidgetGoals() {
                             <h3>Sleep</h3>
                         </div>
                         <div className="sectionContent">
-                            <span>8/8 Hours</span>
+                            <span>{sleep}/8 Hours</span>
                         </div>
                     </>
                 ) : (
-                    <form className="formContainer">
+                    <form onSubmit={(event) => handleSubmit(event, 'sleep')} className="formContainer">
                         <label>How many hours did you sleep?</label>
                         <div>
-                            <input type="number" placeholder="" /> Hours
+                            <input type="number" placeholder="" ref={sleepRef} /> Hours
                         </div>
+                        <button type="submit">Submit</button>
                     </form>
                 )}
             </div>
 
+            {/* Diet card */}
             <div className="cardContainer animate__animated animate__bounceInRight" id="dietCard">
-                <span className="addAction" onClick={flipDietCard}><AiOutlinePlus /></span>
+                <span className="addAction" onClick={() => flipCard('diet')}><AiOutlinePlus /></span>
                 {isDietFront ? (
                     <>
                         <div className="sectionHeader">
@@ -56,21 +118,23 @@ function WidgetGoals() {
                             <h3>Diet</h3>
                         </div>
                         <div className="sectionContent">
-                            <span>2000/2000 Calories</span>
+                            <span>{diet}/2000 Calories</span>
                         </div>
                     </>
                 ) : (
-                    <form className="formContainer">
+                    <form onSubmit={(event) => handleSubmit(event, 'diet')} className="formContainer">
                         <label>How many calories did you consume?</label>
                         <div>
-                            <input type="number" placeholder="" /> Calories
+                            <input type="number" placeholder="" ref={dietRef} /> Calories
                         </div>
+                        <button type="submit">Submit</button>
                     </form>
                 )}
             </div>
 
+            {/* Exercise card */}
             <div className="cardContainer animate__animated animate__bounceInRight" id="exerciseCard">
-                <span className="addAction" onClick={flipExerciseCard}><AiOutlinePlus /></span>
+                <span className="addAction" onClick={() => flipCard('exercise')}><AiOutlinePlus /></span>
                 {isExerciseFront ? (
                     <>
                         <div className="sectionHeader">
@@ -78,15 +142,16 @@ function WidgetGoals() {
                             <h3>Exercise</h3>
                         </div>
                         <div className="sectionContent">
-                            <span>1/1 Hours</span>
+                            <span>{exercise}/1 Hours</span>
                         </div>
                     </>
                 ) : (
-                    <form className="formContainer">
+                    <form onSubmit={(event) => handleSubmit(event, 'exercise')} className="formContainer">
                         <label>How many hours did you exercise?</label>
                         <div>
-                            <input type="number" placeholder="" /> Hours
+                            <input type="number" placeholder="" ref={exerciseRef} /> Hours
                         </div>
+                        <button type="submit">Submit</button>
                     </form>
                 )}
             </div>

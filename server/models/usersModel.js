@@ -1,12 +1,12 @@
-//This is used to create a model of a collection.
 const jwt = require('jsonwebtoken');
 const mongoose = require("mongoose");
+const dailySchema = require("./dailyModel");
 
 const userSchema = new mongoose.Schema({
   name: String,
-  username: String,
   email: String,
-  password: String
+  password: String,
+  daily: [dailySchema]
 }, {
   versionKey: false
 });

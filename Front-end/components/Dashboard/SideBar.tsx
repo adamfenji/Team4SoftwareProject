@@ -25,7 +25,7 @@ function SideBar() {
 
                     {/* div containing the logo and name of the web application */}
                     <div className="logo">
-                        <img src="..\assets\logo-sample.jpg" alt="logo" />
+                        <img src="../assets/logo-sample.jpg" alt="logo" />
                         <h2>ActivityTracker</h2>
                     </div>
 

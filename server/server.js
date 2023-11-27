@@ -27,7 +27,9 @@ db.once('open', () => {
 
 //Routes:
 const authentification = require("./routes/authentification");
+const dailyTracking = require("./routes/dailyTracking");
 app.use('/api/authentification', authentification);
+app.use('/api/daily', dailyTracking);
 
 app.listen(PORT, ()=>{ console.log(`Server running on PORT ${PORT}...`)});
 
