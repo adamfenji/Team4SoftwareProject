@@ -1,0 +1,12 @@
+.mentalTrackerContainer{
+    display: flex;
+    width: 99%;
+    flex: 1;
+}
+
+.mentalTracker{
+    width: 50%;
+}
+.sidebarDashboard{
+    display: flex;
+}

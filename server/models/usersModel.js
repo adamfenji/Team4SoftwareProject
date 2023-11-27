@@ -6,7 +6,11 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
+<<<<<<< HEAD
   daily: [dailySchema]
+=======
+  workoutGoals: [userPhyTrack],
+>>>>>>> 2ef612528a5548ccf35da01bef6d6b360f25c9a5
 }, {
   versionKey: false
 });

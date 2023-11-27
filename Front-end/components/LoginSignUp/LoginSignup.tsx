@@ -86,7 +86,8 @@ const LoginSignup = () => {
             </div>
             <button type="submit">Confirm</button>
           </div>
-          {action === "Sign Up" ? null : <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>}
+          {action === "Sign Up" ? <div></div> : <div className="forgot-password"onClick={() => window.location.href = "/Team4SoftwareProject/password_reset"}>Forgot Password? <span>Click Here!</span></div>}
+          
         </div>
       </form>
     </div>
