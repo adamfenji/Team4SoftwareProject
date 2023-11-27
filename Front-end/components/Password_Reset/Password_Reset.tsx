@@ -6,27 +6,39 @@ import emailjs from '@emailjs/browser';
 const Password_Reset: React.FC = () => {
     
     const [email, setEmail] = useState('');
-    
+    const jwt = require('jsonwebtoken');
+        const id = 'rofl';
+        const pass = 'haha';
+        const JWT_SECRET = 'lol';
+        const secret: string = JWT_SECRET + pass;
+        const payload = {
+            email,
+            id
+        }
+        const token: string = jwt.sign(payload, secret, {expiresIn: '15m'});    
+        const link: string = 'http://localhost:3000/password_reset/' + id + token;  
+        console.log(link);
+
         const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             setEmail(e.target.value);
         };
-    
+        
+        const myForm = '#myForm';
         const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(email == 'example@gmail.com'){// Eventually check to see if email is in database
-            console.log('message sent')
-            alert('Email with recovery link sent.')
-            //Send email to reset password
-            console.log('message sent')
-            emailjs.send('service_g7nvqdp', 'template_led525w')
-            emailjs.sendForm('service_g7nvqdp', 'template_led525w', email, 'WUcjA5nA5O--8B0Vd')
+        if(true){// Eventually check to see if email is in database
+        
+            //Send email to reset password  
+            
+            emailjs.sendForm('service_g7nvqdp', 'template_led525w', myForm, 'WUcjA5nA5O--8B0Vd') 
                 .then((result) => {
                 console.log(result.text);
-                
-            }, (error) => {
+                alert('Email with recovery link sent.')        
+            }, (error) => { 
             console.log(error.text);
-        }
-        );
+            alert('Error.') 
+            }
+            );
         }
         else{
             alert('Given email was not found.')
@@ -35,7 +47,6 @@ const Password_Reset: React.FC = () => {
         console.log(`Initiating password recovery for ${email}`);
         // Reset the form
         setEmail('');
-
       };
 
   return (
@@ -48,7 +59,7 @@ const Password_Reset: React.FC = () => {
                 <div className="underline"></div>
           </div>
 
-            <form name = 'myForm' onSubmit = {handleSubmit}>
+            <form id = 'myForm' onSubmit = {handleSubmit}>
                 <div className="inputs">
                     <div className="input">
                         <img src={email_img} alt="" />
