@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 
-const userPhyTrack = new mongoose.Schema({
+const userPhyTrackSchema = new mongoose.Schema({
   workoutGoals: [
     {
       goal: String,
@@ -9,6 +9,5 @@ const userPhyTrack = new mongoose.Schema({
   ],
 });
 
-const UserPhyTrack = mongoose.model('UserPhyTrack', userPhyTrack);
 
-module.exports = UserPhyTrack;
+module.exports = mongoose.model('UserPhyTrack', userPhyTrackSchema);

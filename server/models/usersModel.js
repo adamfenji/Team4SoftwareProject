@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   daily: [dailySchema],
-  workoutGoals: [userPhyTrack],
+  phyTrack: userPhyTrackSchema,
 }, {
   versionKey: false
 });
@@ -18,5 +18,5 @@ userSchema.methods.generateAuthToken = function(){
   }, "jwtPrivateKey")
   return token;
 };
-
-module.exports = mongoose.model(`users`, userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;

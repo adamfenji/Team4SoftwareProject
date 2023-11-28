@@ -1,15 +1,29 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { Line } from 'react-chartjs-2';
+import Chart, { TooltipItem, ChartOptions } from 'chart.js/auto'; 
 import './PhysicalTracker.css';
+
+
 
 interface WorkoutGoal {
   goal: string;
 }
 
+interface ActivityData {
+  [date: string]: number;
+}
+
 const PhysicalTracker: FC<{}> = () => {
   const [workoutGoals, setWorkoutGoals] = useState<string>('');
+  const [enteredGoals, setEnteredGoals] = useState<string[]>([]);
   const [selectedWorkout, setSelectedWorkout] = useState<string | null>(null);
   const [selectedBodyPart, setSelectedBodyPart] = useState<string | null>(null);
+  const [activityData, setActivityData] = useState<ActivityData>({});
+  const [inputDate, setInputDate] = useState<string>('');
+  const [inputMinutes, setInputMinutes] = useState<number | ''>('');
+
+  const chartRef = useRef<Chart | null>(null);
 
   const handleGoalChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setWorkoutGoals(event.target.value);
@@ -18,11 +32,13 @@ const PhysicalTracker: FC<{}> = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Send workout goal to the server
-    axios.post('http://localhost:3000/api/workouts', { goal: workoutGoals })
-      .then(response => {
+    axios
+      .post('http://localhost:3000/api/workouts', { goal: workoutGoals })
+      .then((response) => {
         setWorkoutGoals('');
+        setEnteredGoals((prevGoals) => [...prevGoals, workoutGoals]); // Update entered goals
       })
-      .catch(error => console.error('Error submitting workout goal:', error));
+      .catch((error) => console.error('Error submitting workout goal:', error));
   };
 
   const handleWorkoutSelection = (workoutType: string) => {
@@ -34,6 +50,75 @@ const PhysicalTracker: FC<{}> = () => {
   const handleBodyPartSelection = (bodyPart: string) => {
     setSelectedBodyPart(bodyPart);
   };
+
+  const handleAddActivity = () => {
+    if (inputDate && inputMinutes !== '') {
+      setActivityData({
+        ...activityData,
+        [inputDate]: inputMinutes as number,
+      });
+      setInputDate('');
+      setInputMinutes('');
+    }
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (name === 'date') {
+      setInputDate(value);
+    } else if (name === 'minutes') {
+      setInputMinutes(Number(value) || '');
+    }
+  };
+
+  useEffect(() => {
+    // Destroy the previous Chart instance
+    if (chartRef.current) {
+      chartRef.current.destroy();
+    }
+  
+    // Sort dates
+    const sortedDates = Object.keys(activityData).sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+  
+    // Create the new Chart instance with updated data
+    const newChart = new Chart('physicalActivityChart', {
+      type: 'line',
+      data: {
+        labels: sortedDates,
+        datasets: [
+          {
+            label: 'Minutes of Physical Activity',
+            borderColor: 'rgba(75,192,192,1)',
+            backgroundColor: 'rgba(75,192,192,0.4)',
+            data: sortedDates.map(date => activityData[date]),
+          },
+        ],
+      },
+      options: {
+        scales: {
+          x: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)', // X-axis grid color
+            },
+            ticks: {
+              color: 'rgba(255, 255, 255, 0.8)', // X-axis ticks color
+            },
+          },
+          y: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)', // Y-axis grid color
+            },
+            ticks: {
+              color: 'rgba(255, 255, 255, 0.8)', // Y-axis ticks color
+            },
+          },
+        },
+      },
+    });
+  
+    // Save the newChart reference for future cleanup
+    chartRef.current = newChart;
+  }, [activityData]);
 
   return (
     <div className='ptContainer'>
@@ -53,6 +138,16 @@ const PhysicalTracker: FC<{}> = () => {
           <br />
           <input type='submit' value='Set Goals' />
         </form>
+        {enteredGoals.length > 0 && (
+          <div className='enteredGoals'>
+            <h3>Entered Goals:</h3>
+            <ul>
+              {enteredGoals.map((goal, index) => (
+                <li key={index}>{goal}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <br />
@@ -169,6 +264,33 @@ const PhysicalTracker: FC<{}> = () => {
             <p>Selected Workout: {selectedWorkout}</p>
           </div>
         )}
+      </div>
+
+      <div className='progress'>
+        <h2>Progress</h2>
+        <div className='Graph'>
+        <canvas id='physicalActivityChart' />
+          <div className='activityInput'>
+            <h3>Enter Activity:</h3>
+            <label htmlFor='date'>Date:</label>
+            <input
+              type='date'
+              id='date'
+              name='date'
+              value={inputDate}
+              onChange={handleInputChange}
+            />
+            <label htmlFor='minutes'>Minutes:</label>
+            <input
+              type='number'
+              id='minutes'
+              name='minutes'
+              value={inputMinutes}
+              onChange={handleInputChange}
+            />
+            <button onClick={handleAddActivity}>Add Activity</button>
+          </div>
+        </div>
       </div>
     </div>
   );
