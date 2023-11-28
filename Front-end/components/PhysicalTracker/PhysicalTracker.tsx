@@ -33,12 +33,6 @@ const PhysicalTracker: FC<{}> = () => {
 
   const handleBodyPartSelection = (bodyPart: string) => {
     setSelectedBodyPart(bodyPart);
-    // Fetch exercises based on the selected body part (you can implement this logic)
-    // Example: axios.get(`http://localhost:3000/api/exercises?bodyPart=${bodyPart}`)
-    //   .then(response => {
-    //     // Handle the response and update the UI with exercises
-    //   })
-    //   .catch(error => console.error('Error fetching exercises:', error));
   };
 
   return (
@@ -76,35 +70,95 @@ const PhysicalTracker: FC<{}> = () => {
               <button onClick={() => handleWorkoutSelection('Mobility')}>Mobility</button>
               <button onClick={() => handleWorkoutSelection('Stretch')}>Stretch</button>
               <button onClick={() => handleWorkoutSelection('Dance')}>Dance</button>
-
               <button onClick={() => handleWorkoutSelection('Strength')}>Strength</button>
               <button onClick={() => handleWorkoutSelection('Cardio')}>Cardio</button>
               <button onClick={() => handleWorkoutSelection('HIIT')}>HIIT</button>
               <button onClick={() => handleWorkoutSelection('Running')}>Running</button>
               <button onClick={() => handleWorkoutSelection('No-Equipment')}>No-Equipment</button>
-
               <button onClick={() => handleWorkoutSelection('Self-Defense')}>Self-Defense</button>
 
             </div>
           </div>
 
+          {/* Buttons for Strength */}
           {selectedWorkout === 'Strength' && (
-            <div className='strengthBodyPartSelection'>
+            <div className='BodyPartSelection'>
               <h3>Select a specific area for Strength training:</h3>
               <div className='bodyPartButtons'>
                 <button onClick={() => {
-                  handleBodyPartSelection('Upper Body');
+                  handleBodyPartSelection('Full Body');
                   window.location.href = 'https://www.youtube.com/watch?v=XxuRSjER3Qk';
                 }}>
                   Full Body
                 </button>
-                <button onClick={() => handleBodyPartSelection('Lower Body')}>Lower Body</button>
 
+                <button onClick={() => {
+                  handleBodyPartSelection('Abs');
+                  window.location.href = '#';
+                }}>
+                  Abs
+                </button>
+
+                <button onClick={() => {
+                  handleBodyPartSelection('Arms');
+                  window.location.href = '#';
+                }}>
+                  Arms
+                </button>
+
+                <button onClick={() => {
+                  handleBodyPartSelection('Legs');
+                  window.location.href = '#';
+                }}>
+                  Legs
+                </button>
               </div>
 
               {selectedBodyPart && (
                 <div className='selectedBodyPart'>
                   <p>Selected Body Part: {selectedBodyPart}</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Buttons for Pilates */}
+          {selectedWorkout === 'Pilates' && (
+            <div className='pilatesBodyPartSelection'>
+              <h3>Select a specific area for Pilates training:</h3>
+              <div className='bodyPartButtons'>
+                <button onClick={() => {
+                  handleBodyPartSelection('Full Body');
+                  window.location.href = '#';
+                }}>
+                  Full Body
+                </button>
+                <button onClick={() => {
+                  handleBodyPartSelection('Core');
+                  window.location.href = '#';
+                }}>
+                  Core
+                </button>
+
+                <button onClick={() => {
+                  handleBodyPartSelection('Lower Body');
+                  window.location.href = '#';
+                }}>
+                  Lower Body
+                </button>
+
+                <button onClick={() => {
+                  handleBodyPartSelection('Arms');
+                  window.location.href = '#';
+                }}>
+                  Arms
+                </button>
+
+              </div>
+
+              {selectedBodyPart && (
+                <div className='selectedBodyPart'>
+                  <p>Selected Area: {selectedBodyPart}</p>
                 </div>
               )}
             </div>
