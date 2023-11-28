@@ -1,0 +1,5 @@
+.physicalTrackerContainer{
+    display: flex;
+    width: 99%;
+    flex: 1;
+}

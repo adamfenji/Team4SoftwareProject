@@ -2,9 +2,9 @@ import SideBar from "../Dashboard/SideBar";
 import PhysicalTracker from "./PhysicalTracker"
 import React from "react";
 import "./PhysicalTrackerPage.css";
-import "./Dashboard/SideBar.css"
+import "../Dashboard/SideBar.css"
 
-function Profile() {
+function PhysicalTrackerPage() {
     return (
         <div className="physicalTrackerContainer">
             <div className="sidebarDashboard">
@@ -18,4 +18,4 @@ function Profile() {
 
     );
 }
-export default Profile;
+export default PhysicalTrackerPage;
