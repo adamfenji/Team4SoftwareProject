@@ -11,7 +11,7 @@ const Password_Reset: React.FC = () => {
     const [email, setEmail] = useState('');
         const [page, setPage] = useState("Recovery");
         const [usercode, setUsercode] = useState('');
-        const [code , setCode] = useState(Math.floor(Math.random() * (999999 - 1) + 1));
+        const [code] = useState(Math.floor(Math.random() * (999999 - 1) + 1));
         const [newpass1, setNewpass1] = useState('');
         const [newpass2, setNewpass2] = useState('');
 

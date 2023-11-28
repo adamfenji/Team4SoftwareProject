@@ -1,4 +1,3 @@
-import React from "react";
 import SideBar from "./SideBar.tsx";
 import ActivityCalendar from "./ActivityCalendar.tsx";
 import WidgetGoals from "./WidgetGoals.tsx";
