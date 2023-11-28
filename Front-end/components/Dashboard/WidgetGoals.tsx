@@ -7,7 +7,11 @@ import axios from "axios";
 import "./WidgetGoals.css";
 import 'animate.css';
 
-function WidgetGoals() {
+interface WidgetGoalsProps {
+    goalType: string; // 'sleep', 'diet', or 'exercise'
+  }
+
+function WidgetGoals({ goalType }: WidgetGoalsProps) {
 
     const [isSleepFront, setSleepFront] = useState(true);
     const [isDietFront, setDietFront] = useState(true);
@@ -84,7 +88,7 @@ function WidgetGoals() {
 
     return (
         <div className="widgetContainer">
-            {/* Sleep card */}
+            {goalType === 'sleep' && (
             <div className="cardContainer animate__animated animate__bounceInRight" id="sleepCard">
                 <span className="addAction" onClick={() => flipCard('sleep')}><AiOutlinePlus /></span>
                 {isSleepFront ? (
@@ -107,8 +111,9 @@ function WidgetGoals() {
                     </form>
                 )}
             </div>
+            )}
 
-            {/* Diet card */}
+            {goalType === 'diet' && (
             <div className="cardContainer animate__animated animate__bounceInRight" id="dietCard">
                 <span className="addAction" onClick={() => flipCard('diet')}><AiOutlinePlus /></span>
                 {isDietFront ? (
@@ -131,8 +136,9 @@ function WidgetGoals() {
                     </form>
                 )}
             </div>
+            )}
 
-            {/* Exercise card */}
+            {goalType === 'exercise' && (
             <div className="cardContainer animate__animated animate__bounceInRight" id="exerciseCard">
                 <span className="addAction" onClick={() => flipCard('exercise')}><AiOutlinePlus /></span>
                 {isExerciseFront ? (
@@ -155,6 +161,7 @@ function WidgetGoals() {
                     </form>
                 )}
             </div>
+            )}
         </div>
     );
 }
