@@ -1,5 +1,3 @@
-
-
 .ptContainer {
     display: flex;
     flex-direction: column;
@@ -17,6 +15,24 @@
 
 form {
     margin-top: 20px;
+}
+
+.setGoal {
+    margin-bottom: 20px;
+}
+
+.enteredGoals {
+    margin-top: 20px;
+    color: white; /* Add text color for entered goals */
+}
+
+.enteredGoals ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.enteredGoals li {
+    margin-bottom: 10px;
 }
 
 label {

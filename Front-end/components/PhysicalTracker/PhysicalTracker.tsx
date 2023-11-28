@@ -16,6 +16,7 @@ interface ActivityData {
 
 const PhysicalTracker: FC<{}> = () => {
   const [workoutGoals, setWorkoutGoals] = useState<string>('');
+  const [enteredGoals, setEnteredGoals] = useState<string[]>([]);
   const [selectedWorkout, setSelectedWorkout] = useState<string | null>(null);
   const [selectedBodyPart, setSelectedBodyPart] = useState<string | null>(null);
   const [activityData, setActivityData] = useState<ActivityData>({});
@@ -35,6 +36,7 @@ const PhysicalTracker: FC<{}> = () => {
       .post('http://localhost:3000/api/workouts', { goal: workoutGoals })
       .then((response) => {
         setWorkoutGoals('');
+        setEnteredGoals((prevGoals) => [...prevGoals, workoutGoals]); // Update entered goals
       })
       .catch((error) => console.error('Error submitting workout goal:', error));
   };
@@ -94,8 +96,21 @@ const PhysicalTracker: FC<{}> = () => {
       },
       options: {
         scales: {
+          x: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)', // X-axis grid color
+            },
+            ticks: {
+              color: 'rgba(255, 255, 255, 0.8)', // X-axis ticks color
+            },
+          },
           y: {
-            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)', // Y-axis grid color
+            },
+            ticks: {
+              color: 'rgba(255, 255, 255, 0.8)', // Y-axis ticks color
+            },
           },
         },
       },
@@ -104,7 +119,7 @@ const PhysicalTracker: FC<{}> = () => {
     // Save the newChart reference for future cleanup
     chartRef.current = newChart;
   }, [activityData]);
-  
+
   return (
     <div className='ptContainer'>
       <div className='setGoal'>
@@ -123,6 +138,16 @@ const PhysicalTracker: FC<{}> = () => {
           <br />
           <input type='submit' value='Set Goals' />
         </form>
+        {enteredGoals.length > 0 && (
+          <div className='enteredGoals'>
+            <h3>Entered Goals:</h3>
+            <ul>
+              {enteredGoals.map((goal, index) => (
+                <li key={index}>{goal}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <br />
