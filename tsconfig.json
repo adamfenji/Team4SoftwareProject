@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -21,6 +22,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "Front-end/components/LoginSignUp/LoginSignup.tsx", "Front-end/components/Dashboard/Dashboard.tsx", "src/Routes.tsx"],
+  "include": ["src", "Front-end/components/LoginSignUp/LoginSignup.tsx", "Front-end/components/Dashboard/Dashboard.tsx", "src/Routes.tsx", "images.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

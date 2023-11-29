@@ -15,9 +15,7 @@ function MentalTrackerPage() {
             <div className="mentalTracker">
                 <MentalTracker />
             </div>
-            <div className="goalProgress">
-                <WidgetGoals/> 
-            </div>
+            
         </div>
 
     );

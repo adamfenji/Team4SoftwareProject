@@ -2,6 +2,9 @@ import { useState, useRef } from 'react';
 import './LoginSignup.css';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import person_img from '../../assets/person.png'
+import email_img from '../../assets/email.png'
+import password_img from '../../assets/password.png'
 
 const LoginSignup = () => {
   const [action, setAction] = useState("Sign Up");
@@ -70,17 +73,17 @@ const LoginSignup = () => {
           <div className="inputs">
             {action === "Login" ? null : (
               <div className="input">
-                <img src={"../../assets/person.png"} alt="" />
+                <img src={person_img} alt="" />
                 <input ref={nameRef} type="text" placeholder="Name" name='name' />
               </div>
             )}
             <div className="input">
-              <img src={'../../assets/email.png'} alt="" />
+              <img src={email_img} alt="" />
               <input ref={emailRef} type="email" placeholder="Email" name='email' />
               {alertEmail && <p className='AlertLogIn'>No user found</p>}
             </div>
             <div className="input">
-              <img src={'../../assets/password.png'} alt="" />
+              <img src={password_img} alt="" />
               <input ref={passwordRef} type="password" placeholder="Password" name='password' />
               {alertPassword && <p className='AlertLogIn'>Password incorrect</p>}
             </div>

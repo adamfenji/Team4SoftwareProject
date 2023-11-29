@@ -5,6 +5,7 @@ import { BiLogOutCircle, BiBody } from "react-icons/bi";
 import { FaAppleAlt, FaBrain } from "react-icons/fa";
 import { CgMoreVertical, CgProfile } from "react-icons/cg";
 import { IoBalloon } from "react-icons/io5";
+import logo_sample from '../../assets/logo-sample.jpg'
 
 import "./SideBar.css";
 
@@ -25,7 +26,7 @@ function SideBar() {
 
                     {/* div containing the logo and name of the web application */}
                     <div className="logo">
-                        <img src="../assets/logo-sample.jpg" alt="logo" />
+                        <img src={logo_sample} alt="logo" />
                         <h2>ActivityTracker</h2>
                     </div>
 
@@ -105,7 +106,7 @@ function SideBar() {
 
                     {/* div containing the logo and name of the web application */}
                     <div className="logo-extanded">
-                        <img src="..\assets\logo-sample.jpg" alt="logo" />
+                        <img src={logo_sample} alt="logo" />
                     </div>
 
                     {/* ul containg the sections of the web application.
