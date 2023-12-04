@@ -22,8 +22,43 @@ const PhysicalTracker: FC<{}> = () => {
   const [activityData, setActivityData] = useState<ActivityData>({});
   const [inputDate, setInputDate] = useState<string>('');
   const [inputMinutes, setInputMinutes] = useState<number | ''>('');
-
+  const [userId, setUserId] = useState<string | null>(null);
   const chartRef = useRef<Chart | null>(null);
+  
+  useEffect(() => {
+    // Fetch user-specific workout goals when the component mounts
+    const fetchUserWorkoutGoals = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          console.error('Token is null');
+          return;
+        }
+    
+        const response = await axios.get('http://localhost:3000/api/workouts', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+    
+        console.log('Workout Goals Response:', response);
+    
+        if (response.status !== 200) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const goalsArray = response.data; // Adjust this based on the actual response structure
+        const goals = goalsArray.map((goalObj: WorkoutGoal) => goalObj.goal);
+    
+        setWorkoutGoals(goals); // Update state with fetched goals
+      } catch (error) {
+        console.error('Error fetching workout goals:', error);
+      }
+    };
+    
+
+    fetchUserWorkoutGoals();
+  }, []);
 
   const handleGoalChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setWorkoutGoals(event.target.value);
@@ -39,10 +74,10 @@ const PhysicalTracker: FC<{}> = () => {
           Authorization: `Bearer ${token}`
         }
       })
-      .then((response) => {
-        setWorkoutGoals('');
-        setEnteredGoals((prevGoals) => [...prevGoals, workoutGoals]);
-      })
+      .then(() => {
+      setWorkoutGoals('');
+      setEnteredGoals((prevGoals) => [...prevGoals, workoutGoals]);
+    })
       .catch((error) => console.error('Error submitting workout goal:', error));
   };
 
@@ -143,16 +178,14 @@ const PhysicalTracker: FC<{}> = () => {
           <br />
           <input type='submit' value='Set Goals' />
         </form>
-        {enteredGoals.length > 0 && (
-          <div className='enteredGoals'>
-            <h3>Entered Goals:</h3>
-            <ul>
-              {enteredGoals.map((goal, index) => (
-                <li key={index}>{goal}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className='enteredGoals'>
+          <h3>Entered Goals:</h3>
+          <ul>
+            {enteredGoals.map((goal, index) => (
+              <li key={index}>{goal}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <br />
