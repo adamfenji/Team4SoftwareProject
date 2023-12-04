@@ -27,10 +27,11 @@ db.once('open', () => {
 
 //Routes:
 const isAuthenticated = require("./middleware/authorization.js"); // Adjust the path as needed
+const auth = require("./middleware/authorization");
 const authentification = require("./routes/authentification");
 const workoutRoutes = require("./routes/workouts");
 app.use('/api/authentification', authentification);
-app.use('/api/workouts', isAuthenticated, workoutRoutes);
+app.use('/api/workouts', auth, workoutRoutes);
 
 app.listen(PORT, ()=>{ console.log(`Server running on PORT ${PORT}...`)});
 

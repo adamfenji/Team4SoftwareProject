@@ -31,12 +31,16 @@ const PhysicalTracker: FC<{}> = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Send workout goal to the server
+       const token = localStorage.getItem('token'); 
     axios
-      .post('http://localhost:3000/api/workouts', { goal: workoutGoals })
+      .post('http://localhost:3000/api/workouts', { goal: workoutGoals }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then((response) => {
         setWorkoutGoals('');
-        setEnteredGoals((prevGoals) => [...prevGoals, workoutGoals]); // Update entered goals
+        setEnteredGoals((prevGoals) => [...prevGoals, workoutGoals]);
       })
       .catch((error) => console.error('Error submitting workout goal:', error));
   };
