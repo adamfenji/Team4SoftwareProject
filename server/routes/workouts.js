@@ -9,11 +9,15 @@ const auth = require('../middleware/authorization');
 // Endpoint to save workout goals
 router.post('/', auth, async (req, res) => {
   try {
+    console.log('POST /api/workouts');
     const { goal } = req.body;
     const userId = req.user._id;
 
+    console.log('User ID:', userId);
     // Find the user and add the workout goal to their array
     const user = await User.findById(userId);
+
+    console.log('Found User:', user);
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
@@ -22,6 +26,8 @@ router.post('/', auth, async (req, res) => {
     // Assuming 'phyTrack.workoutGoals' is the correct path in your User model
     user.phyTrack.workoutGoals.push({ goal });
     await user.save();
+
+    console.log('Saved User:', user);
 
     res.json({ success: true, workout: { goal } });
   } catch (error) {

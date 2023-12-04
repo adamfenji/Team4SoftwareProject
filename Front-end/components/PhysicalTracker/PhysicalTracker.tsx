@@ -32,7 +32,8 @@ const PhysicalTracker: FC<{}> = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
        const token = localStorage.getItem('token'); 
-    axios
+       console.log('Sending POST request to server with data:', { goal: workoutGoals });
+       axios
       .post('http://localhost:3000/api/workouts', { goal: workoutGoals }, {
         headers: {
           Authorization: `Bearer ${token}`

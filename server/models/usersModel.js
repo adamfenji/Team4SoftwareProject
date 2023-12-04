@@ -8,14 +8,8 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   daily: [dailySchema],
-  phyTrack: {
-    workoutGoals: [
-      {
-        goal: String,
-      },
-    ],
-  },
-}, {
+  phyTrack: userPhyTrackSchema,
+
   versionKey: false
 });
 
