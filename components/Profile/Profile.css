@@ -1,0 +1,5 @@
+.profileContainer{
+    display: flex;
+    width: 99%;
+    flex: 1;
+}

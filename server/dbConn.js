@@ -10,9 +10,8 @@ const dbName = 'testingDB';
 const connectionString = `mongodb+srv://afenjiro:%40Adam1234@activitytrackerdb.8ji6jif.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
 app.use(cors()); //enable CORS
-app.use(express.json()); //Enable express json
 
-//Establish a connection to the DB.cdc
+//Establish a connection to the DB.
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -25,12 +24,11 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-//Routes:
-const isAuthenticated = require("./middleware/authorization.js"); // Adjust the path as needed
-const authentification = require("./routes/authentification");
-const workoutRoutes = require("./routes/workouts");
-app.use('/api/authentification', authentification);
-app.use('/api/workouts', isAuthenticated, workoutRoutes);
+app.use(express.json());
+
+const users = require("./routes/users");
+app.use('/users', users);
+
 
 app.listen(PORT, ()=>{ console.log(`Server running on PORT ${PORT}...`)});
 

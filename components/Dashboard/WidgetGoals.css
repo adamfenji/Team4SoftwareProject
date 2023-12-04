@@ -1,0 +1,83 @@
+.widgetContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+    
+.cardContainer{
+    background-color: black;
+    color: black;
+    width: calc(30.5% - 5px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+.addAction{
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.sectionHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sectionHeader h3{
+    font-size: 2rem;
+    margin-bottom: 25px;
+    margin-left: 5px;
+}
+
+.sectionLogo{
+    height: 50px;
+    width: 50px;
+}
+
+.sectionContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+
+.sectionContent span{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#sleepCard{
+    color: cornflowerblue;
+}
+#exerciseCard{
+    color: green;
+}
+#dietCard{
+    color: red;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.formContainer input{
+    width: 45%;
+    /* color: cornflowerblue; */
+    text-align: center;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
