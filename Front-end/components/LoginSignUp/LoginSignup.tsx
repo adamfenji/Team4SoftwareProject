@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import './LoginSignup.css';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import person_img from '../../assets/person.png'
 import email_img from '../../assets/email.png'
@@ -87,7 +87,11 @@ const LoginSignup = () => {
               <input ref={passwordRef} type="password" placeholder="Password" name='password' />
               {alertPassword && <p className='AlertLogIn'>Password incorrect</p>}
             </div>
-            <button type="submit">Confirm</button>
+            <div className="submit-container1">
+                <div>
+                    <button type="submit" className="submit1">Confirm</button>
+                </div>
+                </div>
           </div>
           {action === "Sign Up" ? <div></div> : <div className="forgot-password"onClick={() => window.location.href = "/Team4SoftwareProject/password_reset"}>Forgot Password? <span>Click Here!</span></div>}
           

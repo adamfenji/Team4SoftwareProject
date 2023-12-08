@@ -3,12 +3,10 @@ import email_img from '../../assets/email.png'
 import password_img from '../../assets/password.png'
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Password_Reset: React.FC = () => {
-
-    const serverUrl = 'http://localhost:3000/api';
 
     const navigate = useNavigate();
     const [emailfound, setEmailfound] = useState(false);
@@ -54,26 +52,28 @@ const Password_Reset: React.FC = () => {
                 alert("Passwords do not match, try again.")
             }
         }
+        const checkEmailExists = async (email: string) => {
+            try {
+              const response = await axios.get('http://localhost:3000/api/authentification/check-email', {
+                    params: {
+                        email: email,   
+                    },
+              });
+          
+              if(response){
+                setEmailfound(true);
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              // Handle error
+            }
+          };
+
         const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const endpoint = `${serverUrl}/check-email/${email}`;
-
-        try {
-          const response = await axios.get(endpoint);
-      
-          if (response.data.exists) {
-            console.log(`The email '${email}' exists in the database.`);
-            setEmailfound(true)
-          } else {
-            console.log(`The email '${email}' does not exist in the database.`);
-          }
-        } catch (error) {
-          console.error('Error: ', error);
-        }
-            
-          
+        checkEmailExists(email);
     
-        if(emailfound){// Eventually check to see if email is in database
+        if(true){// Eventually check to see if email is in database
         
             //Send email to reset password  
             emailjs.send('service_g7nvqdp', 'template_led525w', {
