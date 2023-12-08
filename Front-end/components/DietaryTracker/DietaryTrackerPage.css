@@ -10,3 +10,7 @@
 .sidebarDashboard{
     display: flex;
 }
+
+.goalProgress{
+    display: flex;
+}

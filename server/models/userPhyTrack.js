@@ -10,4 +10,4 @@ const userPhyTrackSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('UserPhyTrack', userPhyTrackSchema);
+module.exports = userPhyTrackSchema;
