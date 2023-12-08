@@ -5,7 +5,6 @@ import Chart, { TooltipItem, ChartOptions } from 'chart.js/auto';
 import './PhysicalTracker.css';
 
 
-
 interface WorkoutGoal {
   goal: string;
 }
@@ -15,8 +14,8 @@ interface ActivityData {
 }
 
 const PhysicalTracker: FC<{}> = () => {
-  const [workoutGoals, setWorkoutGoals] = useState<string>('');
-  const [enteredGoals, setEnteredGoals] = useState<string[]>([]);
+  const [workoutGoal, setWorkoutGoal] = useState<string>('');
+  const [enteredGoals, setEnteredGoals] = useState<WorkoutGoal[]>([]);
   const [selectedWorkout, setSelectedWorkout] = useState<string | null>(null);
   const [selectedBodyPart, setSelectedBodyPart] = useState<string | null>(null);
   const [activityData, setActivityData] = useState<ActivityData>({});
@@ -30,6 +29,8 @@ const PhysicalTracker: FC<{}> = () => {
     const fetchUserWorkoutGoals = async () => {
       try {
         const token = localStorage.getItem('token');
+        console.log('Token:', token); // Log the token
+    
         if (!token) {
           console.error('Token is null');
           return;
@@ -47,38 +48,46 @@ const PhysicalTracker: FC<{}> = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
     
-        const goalsArray = response.data; // Adjust this based on the actual response structure
-        const goals = goalsArray.map((goalObj: WorkoutGoal) => goalObj.goal);
-    
-        setWorkoutGoals(goals); // Update state with fetched goals
+        setEnteredGoals(response.data); // Update state with fetched goals
       } catch (error) {
         console.error('Error fetching workout goals:', error);
       }
     };
     
-
     fetchUserWorkoutGoals();
   }, []);
 
   const handleGoalChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setWorkoutGoals(event.target.value);
+    setWorkoutGoal(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-       const token = localStorage.getItem('token'); 
-       console.log('Sending POST request to server with data:', { goal: workoutGoals });
-       axios
-      .post('http://localhost:3000/api/workouts', { goal: workoutGoals }, {
-        headers: {
-          Authorization: `Bearer ${token}`
+
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Sending POST request to server with data:', { goal: workoutGoal });
+
+      const response = await axios.post(
+        'http://localhost:3000/api/workouts',
+        { goal: workoutGoal },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
-      .then(() => {
-      setWorkoutGoals('');
-      setEnteredGoals((prevGoals) => [...prevGoals, workoutGoals]);
-    })
-      .catch((error) => console.error('Error submitting workout goal:', error));
+      );
+
+      console.log('Workout Goal Submitted:', response.data);
+
+      // Update entered goals state with the newly added goal
+      setEnteredGoals((prevGoals) => [...prevGoals, response.data]);
+
+      // Clear the input field
+      setWorkoutGoal('');
+    } catch (error) {
+      console.error('Error submitting workout goal:', error);
+    }
   };
 
   const handleWorkoutSelection = (workoutType: string) => {
@@ -172,8 +181,9 @@ const PhysicalTracker: FC<{}> = () => {
             rows={4}
             cols={50}
             placeholder='E.g., Run 5 miles, Do 50 push-ups, etc.'
-            value={workoutGoals}
+            value ={workoutGoal}
             onChange={handleGoalChange}
+
           />
           <br />
           <input type='submit' value='Set Goals' />
@@ -182,7 +192,7 @@ const PhysicalTracker: FC<{}> = () => {
           <h3>Entered Goals:</h3>
           <ul>
             {enteredGoals.map((goal, index) => (
-              <li key={index}>{goal}</li>
+              <li key={index}>{goal.goal}</li>
             ))}
           </ul>
         </div>
