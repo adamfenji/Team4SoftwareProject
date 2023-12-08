@@ -17,10 +17,23 @@ const Welcome = () => {
         axios
             .post('http://localhost:3000/Team4SoftwareProject', physiologicalData)
             .then(response => {
-
-            }
-            )
+                
+                console.log(response.data);
+            })
+            .catch ((error) => {
+                console.log("Error saving data: ", error);
+            });
     }
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        if (name === 'weight') {
+          setWeight(value);
+        } else if (name === 'height') {
+          setHeight(value);
+        }
+    };
+
     return ( 
         <div className = 'welcomecontainer'>
             <div className = 'header'>
