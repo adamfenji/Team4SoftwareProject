@@ -13,14 +13,18 @@ const Dietarytracker: FC<DietaryTrackerProps> = () => {
 
   return (
     <div className='dtContainer'>
-      <h2>Mental Tracker</h2>
+      <h2>Dietary Tracker</h2>
       <div className='currentGoal'>
         <h3>Your Current Goal:</h3>
         {/* Pass sleep data to Mentaltracker */}
         <WidgetGoals goalType="diet" />
       </div>
-      <div className='currentProgress'>
-        <h3>Your Progress:</h3>
+      <div className='mealPrepping'>
+        <h3>Meal Prepping Videos:</h3>
+        <form action="https://youtu.be/AYXfaVD5o40?si=JptY1clO-CTAY0RV">
+        <input type="submit" name="Cheap and Healthy Meal Prepping" value="Cheap and Healthy Meal Prepping"/>
+        </form>
+
       </div>
     </div>
   );
