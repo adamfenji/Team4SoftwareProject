@@ -19,8 +19,11 @@ const Mentaltracker: FC<MentalTrackerProps> = () => {
         {/* Pass sleep data to Mentaltracker */}
         <WidgetGoals goalType="sleep" />
       </div>
-      <div className='currentProgress'>
-        <h3>Your Progress:</h3>
+      <div className='meditations'>
+        <h3>Meditations:</h3>
+        <form action="https://youtu.be/Bl8YfvXBL3E?si=RNl6-byuATWPS8RX">
+        <input type="submit" name="Guided Sleep Meditation" value="Guided Sleep Meditation"/>
+        </form>
       </div>
     </div>
   );
