@@ -7,6 +7,7 @@ const User = require('../models/usersModel');
 const auth = require('../middleware/authorization');
 
 // Endpoint to save workout goals
+// Endpoint to save workout goals
 router.post('/', auth, async (req, res) => {
   try {
     console.log('POST /api/workouts');
@@ -14,7 +15,7 @@ router.post('/', auth, async (req, res) => {
     const userId = req.user._id;
 
     console.log('User ID:', userId);
-    // Find the user and add the workout goal to their array
+    // Find the user
     const user = await User.findById(userId);
 
     console.log('Found User:', user);
@@ -23,7 +24,8 @@ router.post('/', auth, async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    // Assuming 'phyTrack.workoutGoals' is the correct path in your User model
+
+    // Add the workout goal to the array
     user.phyTrack.workoutGoals.push({ goal });
     await user.save();
 
@@ -36,22 +38,29 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
+
 // Endpoint to get all workouts
 router.get('/', auth, async (req, res) => {
   try {
     const userId = req.user._id;
-    const user = await User.findById(userId).select('phyTrack.workoutGoals');
+    const user = await User.findById(userId);
+
+    console.log('User:', user);
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    res.json(user.phyTrack.workoutGoals);
+    const workoutGoals = user.phyTrack ? user.phyTrack.workoutGoals : [];
+    
+    res.json(workoutGoals);
   } catch (error) {
     console.error('Error fetching workouts:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
 
 module.exports = router;
 

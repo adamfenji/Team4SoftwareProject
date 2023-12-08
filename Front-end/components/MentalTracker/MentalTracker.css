@@ -15,5 +15,11 @@
 .meditations
 {
     flex: 1;
-    margin-bottom: 2-px;
+    margin-bottom: 20px;
+}
+
+.teleHealth
+{
+    flex: 1;
+    margin-bottom: 20px;
 }

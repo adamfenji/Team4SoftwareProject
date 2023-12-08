@@ -40,9 +40,12 @@ router.get('/:id', (req, res) => {
 // })
 
 router.post('/register', async (req, res) => {
+    // Initialize phyTrack as an empty array when creating a new user
+    req.body.phyTrack = { workoutGoals: [] };
+
     usersModel.create(req.body)
-    .then( (users) => res.status(201).json(users))
-    .catch( (error) => res.status(400).json({ message: error.message }));
+        .then((user) => res.status(201).json(user))
+        .catch((error) => res.status(400).json({ message: error.message }));
 })
 
 router.post("/login", async (req, res)=>{

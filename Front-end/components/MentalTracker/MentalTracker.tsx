@@ -24,6 +24,16 @@ const Mentaltracker: FC<MentalTrackerProps> = () => {
         <form action="https://youtu.be/Bl8YfvXBL3E?si=RNl6-byuATWPS8RX">
         <input type="submit" name="Guided Sleep Meditation" value="Guided Sleep Meditation"/>
         </form>
+
+        <form action="https://youtu.be/W19PdslW7iw?si=x1xgBNe1v4mu6Taf">
+        <input type="submit" name="15 Minute Guided Meditation" value="15 Minute Guided Meditation"/>
+        </form>
+      </div>
+      <div className='teleHealth'>
+        <h3>TelusHealth Student Support:</h3>
+        <form action="https://myssp.app/ca/home">
+        <input type="submit" name="TelusHealth" value="TelusHealth"/>
+        </form>
       </div>
     </div>
   );
