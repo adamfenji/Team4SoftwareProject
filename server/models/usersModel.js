@@ -9,9 +9,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   daily: [dailySchema],
   phyTrack: userPhyTrackSchema,
-
-  versionKey: false
-});
+}, { versionKey: false });
 
 userSchema.methods.generateAuthToken = function(){
   const token = jwt.sign({
