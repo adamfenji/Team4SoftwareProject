@@ -25,6 +25,7 @@ function WidgetGoals({ goalType }: WidgetGoalsProps) {
     const sleepRef = useRef<HTMLInputElement | null>(null);
     const dietRef = useRef<HTMLInputElement | null>(null);
     const exerciseRef = useRef<HTMLInputElement | null>(null);
+    
 
     // Fetch token from localStorage on component mount
     useEffect(() => {
@@ -42,19 +43,26 @@ function WidgetGoals({ goalType }: WidgetGoalsProps) {
         const dietValue = dietRef.current?.value ? parseInt(dietRef.current.value) : 0;
         const exerciseValue = exerciseRef.current?.value ? parseInt(exerciseRef.current.value) : 0;
 
+        const sleepValuePrevious = sleepRef.current?.value ? parseInt(sleepRef.current.value) : 0;
+        const dietValuePrevious = dietRef.current?.value ? parseInt(dietRef.current.value) : 0;
+        const exerciseValuePrevious = exerciseRef.current?.value ? parseInt(exerciseRef.current.value) : 0;
+
         // Update state with the entered values
         let reqData = {};
         if (cardType === 'diet') {
+            reqData = { diet: dietValuePrevious};
             reqData = { diet: dietValue };
-            setDiet(dietValue);
+            setDiet(diet + dietValuePrevious);
         }
         if (cardType === 'sleep') {
+            reqData = { sleep: sleepValuePrevious };
             reqData = { sleep: sleepValue };
-            setSleep(sleepValue);
+            setSleep(sleep + sleepValuePrevious);
         }
         if (cardType === 'exercise') {
+            reqData = { exercise: exerciseValuePrevious };
             reqData = { exercise: exerciseValue };
-            setExercise(exerciseValue);
+            setExercise(exercise + exerciseValuePrevious);
         }
 
         try {
@@ -64,10 +72,11 @@ function WidgetGoals({ goalType }: WidgetGoalsProps) {
                 }
             });
 
-            flipCard(cardType);
+   
         } catch (error) {
             console.error("Error posting data:", error);
         }
+        flipCard(cardType);
     }
 
     const flipCard = (cardType: string) => {
@@ -107,7 +116,8 @@ function WidgetGoals({ goalType }: WidgetGoalsProps) {
                         <div>
                             <input type="number" placeholder="" ref={sleepRef} /> Hours
                         </div>
-                        <button type="submit">Submit</button>
+                        <button type="submit" name="Submit" value="submit">Submit</button>
+                   
                     </form>
                 )}
             </div>
@@ -132,7 +142,7 @@ function WidgetGoals({ goalType }: WidgetGoalsProps) {
                         <div>
                             <input type="number" placeholder="" ref={dietRef} /> Calories
                         </div>
-                        <button type="submit">Submit</button>
+                        <button type="submit" name="Submit" value="submit">Submit</button>
                     </form>
                 )}
             </div>
@@ -148,7 +158,7 @@ function WidgetGoals({ goalType }: WidgetGoalsProps) {
                             <h3>Exercise</h3>
                         </div>
                         <div className="sectionContent">
-                            <span>{exercise}/1 Hours</span>
+                            <span>{exercise}/5 Hours</span>
                         </div>
                     </>
                 ) : (
@@ -157,7 +167,7 @@ function WidgetGoals({ goalType }: WidgetGoalsProps) {
                         <div>
                             <input type="number" placeholder="" ref={exerciseRef} /> Hours
                         </div>
-                        <button type="submit">Submit</button>
+                        <button type="submit" name="Submit" value="submit">Submit</button>
                     </form>
                 )}
             </div>
