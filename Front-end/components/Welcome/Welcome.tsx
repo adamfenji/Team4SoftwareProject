@@ -2,7 +2,6 @@ import SideBar from "../Dashboard/SideBar";
 import WelcomePage from "./WelcomePage"
 
 import "./Welcome.css";
-import React from 'react';
 
 function Welcome () {
     return (

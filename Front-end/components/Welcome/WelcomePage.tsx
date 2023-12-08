@@ -1,4 +1,3 @@
-import React from "react";
 import axios from 'axios';
 import "./WelcomePage.css"
 import { IoBalloon } from "react-icons/io5";
@@ -14,6 +13,7 @@ const Welcome = () => {
             weight,
             height
         };
+        console.log('Request URL:', 'http://localhost:3000/Team4SoftwareProject');
         axios
             .post('http://localhost:3000/Team4SoftwareProject', physiologicalData)
             .then(response => {
